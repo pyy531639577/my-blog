@@ -1,6 +1,6 @@
 <template>
   <header class="my-blog-header">
-    <a class="logo">博客名称</a>
+    <a class="logo">我的博客</a>
     <nav class="menu">
       <ul>
         <li class="nav-item">
@@ -53,6 +53,33 @@ import { Vue, Component, Prop, Model, Watch } from 'vue-property-decorator'
 @Component({})
 export default class Index extends Vue {
 
+  mounted() {
+      window.addEventListener('scroll', this.handleScroll)
+  }
+  // 监听页面滚动
+  handleScroll() {
+    this.handleTop()
+  }
+  // 处理滚动事件
+  handleTop() {
+    // 更新顶部进度条
+    const pageYOffset = window.pageYOffset
+    console.log("pageYOffset",pageYOffset)
+    if (pageYOffset>0){
+      let el = document.getElementsByTagName("header");
+      for (let i = 0; i < el.length; i++) {
+        el.item(i).style.backgroundColor = "#f4f4f4"
+      }
+      console.log(el)
+    }else {
+      let el = document.getElementsByTagName("header");
+      for (let i = 0; i < el.length; i++) {
+        el.item(i).style.backgroundColor = ""
+      }
+    }
+
+    // 判断位置，控制滚动到顶部
+  }
 }
 </script>
 
