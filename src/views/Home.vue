@@ -7,33 +7,56 @@
              <span>人生要有梦想，有梦想就要勇敢去追求，别放弃。</span>
            </div>
            <ul>
-             <li><i class="el-icon-arrow-left icon-font"></i></li>
-             <li><i class="iconfont icon-weixin icon-font"></i></li>
-             <li><i class="iconfont icon-mayun icon-font"></i></li>
-             <li><i class="iconfont icon-Githeibai icon-font"></i></li>
-             <li><i class="iconfont icon-zhifubaorenzheng icon-font"></i></li>
-             <li><i class="iconfont icon-QQ icon-font"></i></li>
-             <li><i class="iconfont icon-mail icon-font"></i></li>
-             <li><i class="el-icon-arrow-right icon-font"></i></li>
+             <li>
+               <el-button icon="el-icon-arrow-left" type="text"></el-button>
+             </li>
+             <li v-for="(item,key) in contactList" :key="key">
+               <a :href="item.link" target="_blank">
+                 <img :src="item.icon"  class="icon-font">
+               </a>
+               <div v-if="item.img" class="code">
+                 <img :src="item.img">
+               </div>
+             </li>
+             <li>
+               <el-button icon="el-icon-arrow-right" type="text"></el-button>
+             </li>
            </ul>
          </div>
        </div>
     </div>
     <div class="content">
-      hahahha
+      <el-card shadow="none" class="notify">
+        <div v-html="notify"></div>
+      </el-card>
+      <Article :articleList="articleList" :number="totalCount"/>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-
 import { Component, Vue } from 'vue-property-decorator'
-
+import config from '@/config/index'
+import Article from '../components/Article/Index.vue'
+import { queryPosts, queryArchivesCount } from '@/utils/services'
+import format from '@/utils/format'
 @Component({
   components: {
+    Article
   }
 })
-export default class Home extends Vue {}
+export default class Home extends Vue {
+  contactList:any[] = config.contact;
+  notify:string = config.notify
+  totalCount:number = 0
+  articleList:any[] = []
+  async mounted () {
+    this.totalCount = await queryArchivesCount()
+    let result = await queryPosts({})
+    this.articleList = result
+    console.log(result)
+  }
+}
 </script>
 
 <style scoped lang="less">
@@ -41,6 +64,9 @@ export default class Home extends Vue {}
     width: 100vw;
     min-height: 100vh;
     transition: 1s opacity linear;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     .banner{
       background: url("../assets/images/banner.jpg") fixed;
       background-size: cover;
@@ -50,12 +76,12 @@ export default class Home extends Vue {}
       .attach{
         position: absolute;
         width: 100%;
-        height: 7rem;
+        height: 12rem;
         top: 28rem;
         display: flex;
         justify-content: center;
         .info{
-          width: 50%;
+          width: 34%;
           height: 100%;
           border-radius: 6px;
           background: rgba(58, 58, 58, 0.6);
@@ -76,37 +102,84 @@ export default class Home extends Vue {}
             position: absolute;
             font-size: 40px;
             font-weight: 600;
-            bottom: 35px;
-            right: 51px;
+            bottom: 91px;
+            right: 16px;
           }
           .info-title{
             font-size: 1.2rem;
             color: white;
-            margin: 1rem 0;
+            margin: 2rem 0;
+            &:hover{
+              font-weight: 600;
+            }
           }
-          & ul{
+          ul{
             list-style: none;
             display: flex;
             flex-direction: row;
             justify-content: space-around;
-            width: 77%;
-            & li:first-child,li:last-child{
+            width: 97%;
+            li:first-child,li:last-child{
               color: darkseagreen;
+              transition: none;
+              font-size: 50px;
             }
-            & li:hover{
-              color: cornflowerblue;
-              cursor: pointer;
+            li {
+              transition: all ease-in-out .5s;
+              position: relative;
+              .el-button{
+                font-size: 50px;
+              }
+              &:hover{
+                cursor: pointer;
+                transform: rotate(360deg);
+                /*animation: move infinite;*/
+              }
+              &:hover .code{
+                display: block;
+                /*transition: all ease-in-out .5s;*/
+              }
+              .code{
+                position: absolute;
+                display: none;
+                top: 7rem;
+                right: -5rem;
+                width: 13rem;
+                height: 13rem;
+                background: rgba(0,0,0,.6);
+                &:before{
+                  content: '';
+                  border: 1rem solid transparent;
+                  border-bottom-color: rgba(0, 0, 0, 0.6);
+                  position: absolute;
+                  top: -32px;
+                  left: 85px;
+                }
+                img{
+                  margin: 1rem;
+                  width: 11rem;
+                  height: 11rem;
+                  border-radius: 6px;
+                  opacity: .6;
+                }
+              }
             }
           }
           .icon-font{
-            font-size: 34px;
+            width: 50px;
+            margin-top: 10px;
           }
         }
       }
     }
     .content{
-      width: 100%;
-      height: 200px;
+      width: 60%;
+      height: 1200px;
+      .notify{
+        margin-top: 4rem;
+        height: 5rem;
+        text-align: left;
+      }
 
     }
   }

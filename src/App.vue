@@ -1,24 +1,26 @@
 <template>
   <div id="app">
-    <vue-progress-bar></vue-progress-bar>
     <Header/>
     <router-view/>
     <Footer/>
+    <scorll-to-top/>
   </div>
 </template>
 
 <script lang="ts">
-  import Header from './components/Header/Index.vue'
-  import Footer from './components/Footer/Index.vue'
-  import { Component, Vue } from 'vue-property-decorator'
+import Header from './components/Header/Index.vue'
+import Footer from './components/Footer/Index.vue'
+import ScorllToTop from './components/ScorllToTop/Index.vue'
+import { Component, Vue } from 'vue-property-decorator'
 
   @Component({
     components: {
       Header,
-      Footer
+      Footer,
+      ScorllToTop
     }
   })
-  export default class App extends Vue {}
+export default class App extends Vue {}
 </script>
 
 <style lang="less">

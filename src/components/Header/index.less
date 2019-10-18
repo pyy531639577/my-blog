@@ -22,17 +22,19 @@
         display: flex;
         flex-direction: row;
         justify-content: space-between;
-        width: 42rem;
+        width: 47rem;
         padding: 0 2rem;
         .nav-item {
           cursor: pointer;
           padding: 0 .7rem;
           & a{
             display: block;
+            text-decoration: none;
             height: 4rem;
             line-height: 4rem;
             color: #666666;
             letter-spacing: .4rem;
+            font-size: 20px;
             &:hover{
               .active;
               transition: all .2s linear;
@@ -45,15 +47,18 @@
     }
   }
 }
+.header-background{
+  background-color: #f4f4f4;
+}
 .active{
   color: blueviolet;
   font-weight: 600;
   border-bottom: 4px solid blueviolet;
 }
+
 @keyframes zoomIn {
   0% {
     border-bottom: none;
-
   }
   100% {
     border-bottom: 4px solid blueviolet;
