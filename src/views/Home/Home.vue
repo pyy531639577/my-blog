@@ -26,11 +26,19 @@
        </div>
     </div>
     <div class="content">
-      <v-card class="notify">
-        <div v-html="notify"></div>
-      </v-card>
+      <v-banner class="mt-4" elevation="0.5" single-line >
+        <v-icon
+          slot="icon"
+          color="warning"
+          size="36"
+        >
+          mdi-bell-ring
+        </v-icon>
+        {{notify}}
+      </v-banner>
       <Article :articleList="articleList" :number="totalCount"/>
-      <v-btn color="error" large>More<v-icon>mdi-plus</v-icon></v-btn>
+      <v-btn color="error" class="mt-4">More<v-icon>mdi-plus</v-icon></v-btn>
+
     </div>
   </div>
 </template>
@@ -40,14 +48,13 @@ import { Component, Vue } from 'vue-property-decorator'
 import config from '@/config'
 import Article from '../../components/Article/Index.vue'
 import { queryPosts, queryArchivesCount } from '@/utils/services'
-import { filter } from 'minimatch'
 @Component({
   components: {
     Article
   }
 })
 export default class Home extends Vue {
-  contactList:any[] = config.contact;
+  contactList:any[] = config.contact
   notify:string = config.notify
   totalCount = ''
   articleList = []

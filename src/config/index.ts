@@ -4,9 +4,7 @@ export default {
    */
   title: '我的博客',
   subtitle: '好好学习 天天向上',
-  notify: `<h1>
-    <i class="el-icon-bell"></i> 号外，号外，博客正式成立啦 !!!
-</h1>`,
+  notify: '博客将于2019年11月20日全部完善....',
 
   /**
    * Github Issues 配置【文章、说说、书单、友链】
