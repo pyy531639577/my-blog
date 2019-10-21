@@ -1,4 +1,5 @@
 export default {
+  // 获取博客总数
   queryArchivesCount: ({ username, repository }:any) => `
     query { 
       repository(owner:"${username}", name: "${repository}") {
@@ -8,6 +9,7 @@ export default {
       }
     }
   `,
+  // 获取心情总数
   queryInspirationCount: ({ username, repository }:any) => `
     query { 
       repository(owner:"${username}", name: "${repository}") {
@@ -17,6 +19,7 @@ export default {
       }
     }
   `,
+  // 获取筛选条件博客的数量
   queryFilterArchivesCount: ({ username, repository, label, milestone }:any) => `
     {
       search(type: ISSUE, query: "

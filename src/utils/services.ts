@@ -77,7 +77,7 @@ export const queryPost = async (number:number) => {
   }
 }
 
-// 获取分类
+// 获取所有分类
 export const queryCategory = async () => {
   try {
     const url = `${blog}/milestones?access_token=${accessToken}`
@@ -111,20 +111,6 @@ export const queryInspiration = async ({ page = 1, pageSize = 10 }) => {
     checkStatus(response)
     const data = await response.json()
     return data
-  } catch (err) {
-    console.log(err)
-  }
-}
-
-// 获取书单 & 友链 & 关于
-export const queryPage = async (type:string) => {
-  try {
-    const upperType = type.replace(/^\S/, s => s.toUpperCase())
-    const url = `${blog}/issues?${closed}&labels=${upperType}`
-    const response = await fetch(url)
-    checkStatus(response)
-    const data = await response.json()
-    return data[0]
   } catch (err) {
     console.log(err)
   }
@@ -173,44 +159,5 @@ export const increaseHot = (post: any) => {
         newcounter.save().then(() => resolve(1))
       }
     })
-  })
-}
-
-// 测试插入时间线
-export const queryAddArchive = async (post: any) => {
-  return new Promise((resolve, reject) => {
-    const query = new AV.Query('Archive')
-    const Archive: any = AV.Object.extend('Archive')
-    let { title, id, summary, isYear, date } = post
-    query.equalTo('id', id)
-    query.find().then((res: any) => {
-      if (res.length > 0) {
-        reject('已存在记录！')
-      } else {
-        const newAr = new Archive()
-        newAr.set('id', id)
-        newAr.set('title', title)
-        newAr.set('date', date.substring(0, 10))
-        newAr.set('summary', summary)
-        newAr.set('isYear', isYear)
-        newAr.set('year', Number(date.substring(0, 4)))
-        newAr
-          .save()
-          .then((res: any) => resolve(res))
-          .catch((error: any) => reject(error))
-      }
-    })
-  })
-}
-// 测试查询时间线
-export const queryArchive = async () => {
-  return new Promise((resolve, reject) => {
-    const query = new AV.Query('Archive')
-    query
-      .find()
-      .then((res: any) => {
-        resolve(res)
-      })
-      .catch((error: any) => reject(error))
   })
 }

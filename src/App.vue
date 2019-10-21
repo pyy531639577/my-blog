@@ -1,9 +1,11 @@
 <template>
   <div id="app">
-    <Header/>
-    <router-view/>
-    <Footer/>
-    <scorll-to-top/>
+    <v-app>
+      <Header/>
+      <router-view/>
+      <Footer/>
+      <scorll-to-top/>
+    </v-app>
   </div>
 </template>
 
