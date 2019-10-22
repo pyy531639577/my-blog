@@ -26,8 +26,9 @@
        </div>
     </div>
     <div class="content">
-      <v-banner class="mt-4" elevation="0.5" single-line >
+      <v-banner class="mt-4 content-warning" elevation="0.8" single-line >
         <v-icon
+          class="content-warning-icon"
           slot="icon"
           color="warning"
           size="36"
@@ -48,6 +49,7 @@ import { Component, Vue } from 'vue-property-decorator'
 import config from '@/config'
 import Article from '../../components/Article/Index.vue'
 import { queryPosts, queryArchivesCount } from '@/utils/services'
+import format from '@/utils/format'
 @Component({
   components: {
     Article
@@ -67,8 +69,10 @@ export default class Home extends Vue {
   async mounted () {
     this.totalCount = await queryArchivesCount()
     let result = await queryPosts(this.searchDTO)
+    result.forEach((a:any) => {
+      format(a)
+    })
     this.articleList = result
-    console.log(result)
   }
 }
 </script>

@@ -25,17 +25,13 @@ export const formatPost = (post:any) => {
   const { body, created_at } : any = post
   const result = regex.exec(body)
   // @ts-ignore
-  const cover = coverRegex.exec(result[1])
+  const cover = coverRegex.exec(body)
   // @ts-ignore
-  post.cover = {
-    // @ts-ignore
-    title: cover[1] || 'defaultCover',
-    // @ts-ignore
-    src: cover[2] || config.defaultCover
-  }
+  console.log(cover)
   // @ts-ignore
   post.description = result[2]
   // @ts-ignore
-  post.created_at = format(created_at, 'zh_CN')
+  // post.created_at = format(created_at, 'zh_CN')
   return post
 }
+export default formatPost

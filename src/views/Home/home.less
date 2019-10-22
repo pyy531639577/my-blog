@@ -1,3 +1,4 @@
+@import "../../assets/animation.less";
 .home{
   width: 100vw;
   min-height: 100vh;
@@ -6,7 +7,7 @@
   flex-direction: column;
   align-items: center;
   .banner{
-    background: url("../../assets/images/banner.jpg") fixed;
+    background: url("https://picsum.photos/id/1012/3973/2639") fixed;
     background-size: cover;
     width: 100%;
     height: 100vh;
@@ -113,6 +114,12 @@
   .content{
     width: 54%;
     height: 1200px;
+    .content-warning{
+      cursor: pointer;
+      &:hover .content-warning-icon{
+        animation: shake 2s;
+      }
+    }
     .notify{
       margin-top: 4rem;
       height: 5rem;

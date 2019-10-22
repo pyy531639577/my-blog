@@ -1,13 +1,14 @@
 <template>
   <div class="article-content">
     <transition name="el-fade-in">
-      <v-row :gutter="20" v-show="articleList.length">
-        <v-col :span="12" v-for="(item,key) in articleList" :key="key">
+      <v-row v-show="articleList.length">
+        <v-col cols="6" v-for="(item,key) in articleList" :key="key">
           <v-hover #default="{ hover }">
             <v-card
-              :elevation="hover ? 12 : 2"
-              class="mx-auto">
+              :elevation="hover ? 12 : 4"
+              class="mx-auto article-content-item">
               <v-img
+                class="article-img"
                 height="250"
                 src="https://cdn.vuetifyjs.com/images/cards/cooking.png"
               >
@@ -16,15 +17,15 @@
               <v-card-text class="text--primary">
                 <div class="content">
                   <p>
-                  Stream 是 Java 8 新增加的类，用来补充集合类。它可以让你以一种声明的方式处理数据。
-                  Stream API 可以极大提高 Java 程序员的生产力，让程序员写出高效率、干净、简洁的代码
+                  {{item.description}}
                  </p>
                </div>
               </v-card-text>
               <div class="meta">
                 <v-chip-group  column>
                   <span> <v-icon>mdi-calendar-range</v-icon>{{ item.created_at.split('T')[0] }}</span>
-                  <span><v-icon>mdi-fire </v-icon>0</span>
+                  <span class="ml-2"><v-icon>mdi-fire </v-icon> 热度1℃ </span>
+                  <span class="ml-2"><v-icon>mdi-folder-open-outline  </v-icon> {{ item.milestone?item.milestone.title:'未分类'}}</span>
                 </v-chip-group>
                 <v-chip-group  column>
                   <v-chip small v-for="label in item.labels.slice(0, 2)" :key="label.id" :color="`#${label.color}`" text-color="white">
@@ -61,6 +62,8 @@ export default class Index extends Vue {
     }
     .content{
       width: 100%;
+      height: 100px;
+      overflow: hidden;
       text-align: justify;
       letter-spacing: .1rem;
       font-size: 1.2rem;
