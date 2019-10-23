@@ -1,5 +1,5 @@
 <template>
-  <div class="footer">
+  <div class="footer mt-8">
     <div class="footer-content">
       <h3>Write By Mr.Peng <i class="el-icon-apple" style="color: red"></i> JC</h3>
       <div class="copyright">

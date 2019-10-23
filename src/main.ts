@@ -3,6 +3,7 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import './registerServiceWorker'
+import config from '@/config/index'
 
 // 引入element-ui组件
 import { Button } from 'element-ui'
@@ -17,6 +18,7 @@ import 'vuetify/dist/vuetify.min.css'
 
 Vue.use(Button)
 Vue.config.productionTip = false
+Vue.prototype.$config = config
 
 new Vue({
   // @ts-ignore

@@ -1,13 +1,18 @@
 <template>
   <header class="my-blog-header" :class="isTop? '' : 'header-background '">
-    <a class="logo">我的博客</a>
+    <router-link to="/">
+      <a class="logo">我的博客</a>
+    </router-link>
     <nav class="menu">
       <ul>
         <li class="nav-item" v-for="(item,key) in menu" :key="key">
-          <a :href="item.url">
-            <i class="iconfont" :class="item.icon"></i>
-            <span>{{item.name}}</span>
-          </a>
+          <router-link :to="item.url">
+            <a>
+              <i class="iconfont" :class="item.icon"></i>
+              <span>{{item.name}}</span>
+            </a>
+          </router-link>
+
         </li>
       </ul>
     </nav>

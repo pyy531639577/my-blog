@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <div class="banner">
+    <div :style="bannerClass" class="banner">
        <div class="attach">
          <div class="attach-info">
            <div class="info-title">
@@ -8,7 +8,7 @@
            </div>
            <ul>
              <li>
-               <el-button icon="el-icon-arrow-left" type="text"></el-button>
+               <el-button icon="el-icon-arrow-left" type="text" @click="onleft"></el-button>
              </li>
              <li v-for="(item,key) in contactList" :key="key">
                <a :href="item.link" target="_blank">
@@ -19,7 +19,7 @@
                </div>
              </li>
              <li>
-               <el-button icon="el-icon-arrow-right" type="text"></el-button>
+               <el-button icon="el-icon-arrow-right" type="text" @click="onright"></el-button>
              </li>
            </ul>
          </div>
@@ -65,6 +65,19 @@ export default class Home extends Vue {
     pageSize: 10,
     filter: ''
   }
+  bannerImg:any[] = []
+  random:number = 0
+  bannerClass:any = {}
+
+  created () {
+    this.bannerImg = [
+      'https://picsum.photos/id/171/2048/1536',
+      'https://picsum.photos/id/179/2048/1365',
+      'https://picsum.photos/id/183/2316/1544',
+      'https://picsum.photos/id/209/1920/1280',
+      'https://picsum.photos/id/212/2000/1394'
+    ]
+  }
 
   async mounted () {
     this.totalCount = await queryArchivesCount()
@@ -73,6 +86,30 @@ export default class Home extends Vue {
       format(a)
     })
     this.articleList = result
+    this.random = Math.floor(Math.random() * this.bannerImg.length)
+    this.bannerClass = {
+      'background-image': 'url(' + this.bannerImg[this.random] + ')',
+      'background-size': 'cover',
+      'background-attachment': 'fixed'
+    }
+  }
+
+  onleft () {
+    if (this.random === 0) {
+      this.random = this.bannerImg.length - 1
+    } else {
+      this.random = this.random - 1
+    }
+    this.bannerClass['background-image'] = 'url(' + this.bannerImg[this.random] + ')'
+  }
+  onright () {
+    let num = this.random + 1
+    if (num === this.bannerImg.length) {
+      this.random = 0
+    } else {
+      this.random = num
+    }
+    this.bannerClass['background-image'] = 'url(' + this.bannerImg[this.random] + ')'
   }
 }
 </script>

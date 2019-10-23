@@ -1,7 +1,5 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Home from './views/Home/Home.vue'
-import Archive from './views/Archive/Index.vue'
 
 Vue.use(Router)
 
@@ -9,13 +7,41 @@ export default new Router({
   routes: [
     {
       path: '/',
+      name: 'index',
+      meta: {
+        name: '首页'
+      },
+      component: () => import('@/views/Home/Home.vue')
+    },
+    {
+      path: '/home',
       name: 'home',
-      component: Home
+      component: () => import('@/views/MainHome/Index.vue')
     },
     {
       path: '/archive',
-      name: 'Archive',
-      component: Archive
+      name: 'archive',
+      component: () => import('@/views/Archive/Index.vue')
+    },
+    {
+      path: '/inspiration',
+      name: 'inspiration',
+      component: () => import('@/views/Inspiration/Index.vue')
+    },
+    {
+      path: '/about',
+      name: 'about',
+      component: () => import('@/views/About/Index.vue')
+    },
+    {
+      path: '/category',
+      name: 'category',
+      component: () => import('@/views/Category/Index.vue')
+    },
+    {
+      path: '/tags',
+      name: 'tags',
+      component: () => import('@/views/Tags/Index.vue')
     }
   ]
 })

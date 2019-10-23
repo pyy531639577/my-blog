@@ -1,6 +1,6 @@
 <template>
-  <div class="banner">
-    <v-img :src="imgBackgroud" aspect-ratio="1.7" height="500px"></v-img>
+  <div>
+    <h1>灵感页面</h1>
   </div>
 </template>
 
@@ -9,14 +9,9 @@ import { Vue, Component, Prop, Model, Watch } from 'vue-property-decorator'
 
 @Component({})
 export default class Index extends Vue {
-  @Prop({ type: String, default: '' })
-  imgBackgroud:any
 }
 </script>
 
 <style scoped lang="less">
-  .banner{
-    width: 100%;
-    height: 500px;
-  }
+
 </style>

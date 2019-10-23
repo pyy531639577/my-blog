@@ -5,6 +5,7 @@ export default {
   title: '我的博客',
   subtitle: '好好学习 天天向上',
   notify: '博客将于2019年11月20日全部完善....',
+  loadingImg: require('@/assets/images/loading.gif'),
 
   /**
    * Github Issues 配置【文章、说说、书单、友链】
@@ -41,32 +42,32 @@ export default {
     {
       name: '首页',
       icon: 'icon-shouye',
-      url: ''
+      url: 'home'
     },
     {
       name: '归档',
       icon: 'icon-copy',
-      url: ''
+      url: 'archive'
     },
     {
       name: '分类',
       icon: 'icon-all',
-      url: ''
+      url: 'category'
     },
     {
       name: '标签',
       icon: 'icon-attachment',
-      url: ''
+      url: 'tags'
     },
     {
       name: '灵感',
       icon: 'icon-linggan',
-      url: ''
+      url: 'inspiration'
     },
     {
       name: '关于我',
       icon: 'icon-guanyuwomen',
-      url: ''
+      url: 'about'
     }
   ],
 
