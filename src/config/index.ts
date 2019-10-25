@@ -40,32 +40,32 @@ export default {
   // 菜单
   menu: [
     {
-      name: '首页',
+      name: 'Home',
       icon: 'icon-shouye',
       url: 'home'
     },
     {
-      name: '归档',
+      name: 'Archive',
       icon: 'icon-copy',
       url: 'archive'
     },
     {
-      name: '分类',
+      name: 'Category',
       icon: 'icon-all',
       url: 'category'
     },
     {
-      name: '标签',
+      name: 'Tag',
       icon: 'icon-attachment',
       url: 'tags'
     },
     {
-      name: '灵感',
+      name: 'Inspiration',
       icon: 'icon-linggan',
       url: 'inspiration'
     },
     {
-      name: '关于我',
+      name: 'About',
       icon: 'icon-guanyuwomen',
       url: 'about'
     }

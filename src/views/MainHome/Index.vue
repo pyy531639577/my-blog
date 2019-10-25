@@ -3,7 +3,7 @@
     <Banner :imgBackgroud="bannerImg"/>
     <v-row class="content">
       <v-col cols="8">
-        <v-hover #default="{ hover }" class="mt-8">
+        <v-hover #default="{ hover }" class="blog-item mt-8">
           <v-card :elevation="hover ? 12 : 4" style="border-radius: 6px">
             <v-row>
               <v-col cols="5">
@@ -40,277 +40,14 @@
                 </v-card-actions>
               </v-col>
               <v-col cols="7" class="pa-0">
-                <div style="width: 100%;height: 300px;border-radius: 0 6px 6px 0">
+                <div style="width: 100%;height: 300px;border-radius: 0 6px 6px 0;overflow: hidden">
                   <img src="https://picsum.photos/id/171/2048/1536" style="width: 100%;height: 100%;border-radius: 0 6px 6px 0">
                 </div>
               </v-col>
             </v-row>
           </v-card>
         </v-hover>
-        <v-hover #default="{ hover }" class="mt-8">
-          <v-card :elevation="hover ? 12 : 4" style="border-radius: 6px">
-            <v-row>
-              <v-col cols="5">
-                <div style="text-align: left;padding:0 15px;font-size: 20px;font-weight: 600 ">
-                  <span>标题</span>
-                </div>
-                <v-card-actions style="display: flex;flex-direction: row;justify-content: space-between">
-                  <div>
-                    <v-btn icon>
-                      <v-icon>mdi-heart</v-icon>
-                    </v-btn>
-                    <span>399</span>
-                  </div>
-                  <div>
-                    <v-btn icon>
-                      <v-icon>mdi-bookmark</v-icon>
-                    </v-btn>
-                    <span>2019-08-02</span>
-                  </div>
-                  <div>
-                    <v-btn icon>
-                      <v-icon>mdi-share-variant</v-icon>
-                    </v-btn>
-                    <span>后端</span>
-                  </div>
-                </v-card-actions>
-                <v-card-text style="text-align: justify;letter-spacing: 2px;height: 143px">
-                  sdsadkDJIOWQDMKLKJODCASJDCKQdkjl;sajkldjkaDL;ldsaDLKJAsdfjhSDJKaldcjlafcjksaCLHaxdjsajc
-                </v-card-text>
-                <v-card-actions>
-                  <v-btn icon class="mx-2">
-                    <v-icon class="display-2">mdi-dots-horizontal </v-icon>
-                  </v-btn>
-                </v-card-actions>
-              </v-col>
-              <v-col cols="7" class="pa-0">
-                <div style="width: 100%;height: 300px;border-radius: 0 6px 6px 0">
-                  <img src="https://picsum.photos/id/171/2048/1536" style="width: 100%;height: 100%;border-radius: 0 6px 6px 0">
-                </div>
-              </v-col>
-            </v-row>
-          </v-card>
-        </v-hover>
-        <v-hover #default="{ hover }" class="mt-8">
-          <v-card :elevation="hover ? 12 : 4" style="border-radius: 6px">
-            <v-row>
-              <v-col cols="5">
-                <div style="text-align: left;padding:0 15px;font-size: 20px;font-weight: 600 ">
-                  <span>标题</span>
-                </div>
-                <v-card-actions style="display: flex;flex-direction: row;justify-content: space-between">
-                  <div>
-                    <v-btn icon>
-                      <v-icon>mdi-heart</v-icon>
-                    </v-btn>
-                    <span>399</span>
-                  </div>
-                  <div>
-                    <v-btn icon>
-                      <v-icon>mdi-bookmark</v-icon>
-                    </v-btn>
-                    <span>2019-08-02</span>
-                  </div>
-                  <div>
-                    <v-btn icon>
-                      <v-icon>mdi-share-variant</v-icon>
-                    </v-btn>
-                    <span>后端</span>
-                  </div>
-                </v-card-actions>
-                <v-card-text style="text-align: justify;letter-spacing: 2px;height: 143px">
-                  sdsadkDJIOWQDMKLKJODCASJDCKQdkjl;sajkldjkaDL;ldsaDLKJAsdfjhSDJKaldcjlafcjksaCLHaxdjsajc
-                </v-card-text>
-                <v-card-actions>
-                  <v-btn icon class="mx-2">
-                    <v-icon class="display-2">mdi-dots-horizontal </v-icon>
-                  </v-btn>
-                </v-card-actions>
-              </v-col>
-              <v-col cols="7" class="pa-0">
-                <div style="width: 100%;height: 300px;border-radius: 0 6px 6px 0">
-                  <img src="https://picsum.photos/id/171/2048/1536" style="width: 100%;height: 100%;border-radius: 0 6px 6px 0">
-                </div>
-              </v-col>
-            </v-row>
-          </v-card>
-        </v-hover>
-        <v-hover #default="{ hover }" class="mt-8">
-          <v-card :elevation="hover ? 12 : 4" style="border-radius: 6px">
-            <v-row>
-              <v-col cols="5">
-                <div style="text-align: left;padding:0 15px;font-size: 20px;font-weight: 600 ">
-                  <span>标题</span>
-                </div>
-                <v-card-actions style="display: flex;flex-direction: row;justify-content: space-between">
-                  <div>
-                    <v-btn icon>
-                      <v-icon>mdi-heart</v-icon>
-                    </v-btn>
-                    <span>399</span>
-                  </div>
-                  <div>
-                    <v-btn icon>
-                      <v-icon>mdi-bookmark</v-icon>
-                    </v-btn>
-                    <span>2019-08-02</span>
-                  </div>
-                  <div>
-                    <v-btn icon>
-                      <v-icon>mdi-share-variant</v-icon>
-                    </v-btn>
-                    <span>后端</span>
-                  </div>
-                </v-card-actions>
-                <v-card-text style="text-align: justify;letter-spacing: 2px;height: 143px">
-                  sdsadkDJIOWQDMKLKJODCASJDCKQdkjl;sajkldjkaDL;ldsaDLKJAsdfjhSDJKaldcjlafcjksaCLHaxdjsajc
-                </v-card-text>
-                <v-card-actions>
-                  <v-btn icon class="mx-2">
-                    <v-icon class="display-2">mdi-dots-horizontal </v-icon>
-                  </v-btn>
-                </v-card-actions>
-              </v-col>
-              <v-col cols="7" class="pa-0">
-                <div style="width: 100%;height: 300px;border-radius: 0 6px 6px 0">
-                  <img src="https://picsum.photos/id/171/2048/1536" style="width: 100%;height: 100%;border-radius: 0 6px 6px 0">
-                </div>
-              </v-col>
-            </v-row>
-          </v-card>
-        </v-hover>
-        <v-hover #default="{ hover }" class="mt-8">
-          <v-card :elevation="hover ? 12 : 4" style="border-radius: 6px">
-            <v-row>
-              <v-col cols="5">
-                <div style="text-align: left;padding:0 15px;font-size: 20px;font-weight: 600 ">
-                  <span>标题</span>
-                </div>
-                <v-card-actions style="display: flex;flex-direction: row;justify-content: space-between">
-                  <div>
-                    <v-btn icon>
-                      <v-icon>mdi-heart</v-icon>
-                    </v-btn>
-                    <span>399</span>
-                  </div>
-                  <div>
-                    <v-btn icon>
-                      <v-icon>mdi-bookmark</v-icon>
-                    </v-btn>
-                    <span>2019-08-02</span>
-                  </div>
-                  <div>
-                    <v-btn icon>
-                      <v-icon>mdi-share-variant</v-icon>
-                    </v-btn>
-                    <span>后端</span>
-                  </div>
-                </v-card-actions>
-                <v-card-text style="text-align: justify;letter-spacing: 2px;height: 143px">
-                  sdsadkDJIOWQDMKLKJODCASJDCKQdkjl;sajkldjkaDL;ldsaDLKJAsdfjhSDJKaldcjlafcjksaCLHaxdjsajc
-                </v-card-text>
-                <v-card-actions>
-                  <v-btn icon class="mx-2">
-                    <v-icon class="display-2">mdi-dots-horizontal </v-icon>
-                  </v-btn>
-                </v-card-actions>
-              </v-col>
-              <v-col cols="7" class="pa-0">
-                <div style="width: 100%;height: 300px;border-radius: 0 6px 6px 0">
-                  <img src="https://picsum.photos/id/171/2048/1536" style="width: 100%;height: 100%;border-radius: 0 6px 6px 0">
-                </div>
-              </v-col>
-            </v-row>
-          </v-card>
-        </v-hover>
-        <v-hover #default="{ hover }" class="mt-8">
-          <v-card :elevation="hover ? 12 : 4" style="border-radius: 6px">
-            <v-row>
-              <v-col cols="5">
-                <div style="text-align: left;padding:0 15px;font-size: 20px;font-weight: 600 ">
-                  <span>标题</span>
-                </div>
-                <v-card-actions style="display: flex;flex-direction: row;justify-content: space-between">
-                  <div>
-                    <v-btn icon>
-                      <v-icon>mdi-heart</v-icon>
-                    </v-btn>
-                    <span>399</span>
-                  </div>
-                  <div>
-                    <v-btn icon>
-                      <v-icon>mdi-bookmark</v-icon>
-                    </v-btn>
-                    <span>2019-08-02</span>
-                  </div>
-                  <div>
-                    <v-btn icon>
-                      <v-icon>mdi-share-variant</v-icon>
-                    </v-btn>
-                    <span>后端</span>
-                  </div>
-                </v-card-actions>
-                <v-card-text style="text-align: justify;letter-spacing: 2px;height: 143px">
-                  sdsadkDJIOWQDMKLKJODCASJDCKQdkjl;sajkldjkaDL;ldsaDLKJAsdfjhSDJKaldcjlafcjksaCLHaxdjsajc
-                </v-card-text>
-                <v-card-actions>
-                  <v-btn icon class="mx-2">
-                    <v-icon class="display-2">mdi-dots-horizontal </v-icon>
-                  </v-btn>
-                </v-card-actions>
-              </v-col>
-              <v-col cols="7" class="pa-0">
-                <div style="width: 100%;height: 300px;border-radius: 0 6px 6px 0">
-                  <img src="https://picsum.photos/id/171/2048/1536" style="width: 100%;height: 100%;border-radius: 0 6px 6px 0">
-                </div>
-              </v-col>
-            </v-row>
-          </v-card>
-        </v-hover>
-        <v-hover #default="{ hover }" class="mt-8">
-          <v-card :elevation="hover ? 12 : 4" style="border-radius: 6px">
-            <v-row>
-              <v-col cols="5">
-                <div style="text-align: left;padding:0 15px;font-size: 20px;font-weight: 600 ">
-                  <span>标题</span>
-                </div>
-                <v-card-actions style="display: flex;flex-direction: row;justify-content: space-between">
-                  <div>
-                    <v-btn icon>
-                      <v-icon>mdi-heart</v-icon>
-                    </v-btn>
-                    <span>399</span>
-                  </div>
-                  <div>
-                    <v-btn icon>
-                      <v-icon>mdi-bookmark</v-icon>
-                    </v-btn>
-                    <span>2019-08-02</span>
-                  </div>
-                  <div>
-                    <v-btn icon>
-                      <v-icon>mdi-share-variant</v-icon>
-                    </v-btn>
-                    <span>后端</span>
-                  </div>
-                </v-card-actions>
-                <v-card-text style="text-align: justify;letter-spacing: 2px;height: 143px">
-                  sdsadkDJIOWQDMKLKJODCASJDCKQdkjl;sajkldjkaDL;ldsaDLKJAsdfjhSDJKaldcjlafcjksaCLHaxdjsajc
-                </v-card-text>
-                <v-card-actions>
-                  <v-btn icon class="mx-2">
-                    <v-icon class="display-2">mdi-dots-horizontal </v-icon>
-                  </v-btn>
-                </v-card-actions>
-              </v-col>
-              <v-col cols="7" class="pa-0">
-                <div style="width: 100%;height: 300px;border-radius: 0 6px 6px 0">
-                  <img src="https://picsum.photos/id/171/2048/1536" style="width: 100%;height: 100%;border-radius: 0 6px 6px 0">
-                </div>
-              </v-col>
-            </v-row>
-          </v-card>
-        </v-hover>
+
         <div class="text-center mt-8">
           <v-pagination
             :length="15"
@@ -397,6 +134,7 @@
 <script lang="ts">
 import { Vue, Component, Prop, Model, Watch } from 'vue-property-decorator'
 import Banner from '@/components/Banner/Index.vue'
+import { queryPosts, queryArchivesCount } from '@/utils/services'
 @Component({
   components: {
     Banner
@@ -408,10 +146,26 @@ export default class Index extends Vue {
   tagsList:any[]=[];
   // todo 博客筛选条件
   searchDTO:any = {
-
+    page: 1,
+    pageSize: 10,
+    filter: ''
   }
+  // todo 博客列表
+  postsList:any[]=[]
   // todo 今日灵感
   inspiration:any;
+  total:number = 0
+  created () {
+
+  }
+  async mounted () {
+    this.total = await queryArchivesCount()
+    this.getPostList()
+  }
+  async getPostList () {
+    this.postsList = await queryPosts(this.searchDTO)
+    console.log(this.postsList)
+  }
 }
 </script>
 
@@ -424,45 +178,14 @@ export default class Index extends Vue {
       width: 70%;
     }
   }
-  .tag-style{
-    margin-left: 20px;
-    padding: 0 10px 0 12px;
-    background: #42a6f8;
-    color: #fafafa;
-    text-decoration: none;
-    border-bottom-right-radius: 4px;
-    border-top-right-radius: 4px;
-    display: inline-block;
-    height: 28px;
-    line-height: 28px;
-    position: relative;
-    font-size: 12px;
-    margin-bottom: 1rem;
-    &:hover{
-      background: #1976d2;
-      color: #fafafa;
-      transition: all 300ms linear;
-      box-shadow: 0px 5px 5px -3px rgba(0, 0, 0, 0.2), 0px 8px 10px 1px rgba(0, 0, 0, 0.14), 0px 3px 14px 2px rgba(0, 0, 0, 0.12);
+  .blog-item{
+    img{
+      cursor: pointer;
+      transition: all 0.6s;/*图片放大过程的时间*/
+    }
+    &:hover img{
+      transform: scale(1.2);/*鼠标经过图片放大的倍数*/
     }
   }
-  .tag-style::before{
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -14px;
-    border-color: transparent #42a6f8 transparent transparent;
-    border-style: solid;
-    border-width: 14px 14px 14px 0;
-  }
-  .tag-style::after{
-    content: '';
-    position: absolute;
-    top: 12px;
-    left: 0;
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: #fafafa;
-    box-shadow: -1px -1px 1px 0 rgba(0, 0, 0, 0.3);
-  }
+
 </style>

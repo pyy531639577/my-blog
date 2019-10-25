@@ -1,3 +1,4 @@
+@import "../../assets/animation.less";
 .my-blog-header{
   position: fixed;
   width: 100%;
@@ -7,9 +8,11 @@
   flex-direction: row;
   line-height: 4rem;
   justify-content: space-between;
-  transition: all 600ms ease;
+  font: 0.8rem 'Ubuntu', sans-serif;
+  transition: all 500ms ease;
   &:hover{
-    background: rgba(244, 244, 244, 0.8);
+    background: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 1px 40px -8px rgba(0, 0, 0, 0.5);
   }
   .logo{
     padding: 0 2rem;
@@ -22,26 +25,39 @@
         display: flex;
         flex-direction: row;
         justify-content: space-between;
-        width: 47rem;
+        width: 56rem;
         padding: 0 2rem;
         .nav-item {
           cursor: pointer;
           padding: 0 .7rem;
-          & a{
-            display: block;
+          position: relative;
+          a{
+            display: inline-block;
             text-decoration: none;
             height: 4rem;
             line-height: 4rem;
             color: #666666;
-            letter-spacing: .4rem;
+            letter-spacing: .1rem;
             font-size: 20px;
             &:hover{
               .active;
               transition: all .2s linear;
             }
-            &:hover .el-icon-s-home{
-              color: blueviolet;
+            &:hover::after {
+              width: 100%;
+              transition: all 300ms ease;
             }
+            &::after {
+              position: absolute;
+              content: '';
+              width: 0;
+              height: 4px;
+              background: #ffa500;
+              bottom: 0;
+              left: 0;
+              transition: all 300ms ease;
+            }
+
           }
         }
     }
@@ -49,19 +65,13 @@
 }
 .header-background{
   background-color: #f4f4f4;
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 1px 40px -8px rgba(0, 0, 0, 0.5);
+
+
 }
 .active{
   color: blueviolet;
-  font-weight: 600;
-  border-bottom: 4px solid blueviolet;
 }
 
-@keyframes zoomIn {
-  0% {
-    border-bottom: none;
-  }
-  100% {
-    border-bottom: 4px solid blueviolet;
-  }
-}
 

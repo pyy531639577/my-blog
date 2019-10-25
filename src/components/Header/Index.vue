@@ -1,18 +1,17 @@
 <template>
   <header class="my-blog-header" :class="isTop? '' : 'header-background '">
     <router-link to="/">
-      <a class="logo">我的博客</a>
+      <a class="logo">My Blog</a>
     </router-link>
     <nav class="menu">
       <ul>
         <li class="nav-item" v-for="(item,key) in menu" :key="key">
           <router-link :to="item.url">
             <a>
-              <i class="iconfont" :class="item.icon"></i>
+              <i class="iconfont" :class="item.icon" style="font-size: 30px"></i>
               <span>{{item.name}}</span>
             </a>
           </router-link>
-
         </li>
       </ul>
     </nav>

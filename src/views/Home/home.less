@@ -58,7 +58,7 @@
           width: 97%;
           li:first-child,li:last-child{
             color: darkseagreen;
-            transition: none;
+            animation: none!important;
             font-size: 50px;
           }
           li {
@@ -69,12 +69,11 @@
             }
             &:hover{
               cursor: pointer;
-              transform: rotate(360deg);
-              /*animation: move infinite;*/
+              //transform: rotate(360deg);
+              animation: bounce 1s;
             }
             &:hover .code{
               display: block;
-              /*transition: all ease-in-out .5s;*/
             }
             .code{
               position: absolute;
@@ -114,6 +113,9 @@
     height: 1200px;
     .content-warning{
       cursor: pointer;
+      .content-warning-icon{
+        margin-left: 15px;
+      }
       &:hover .content-warning-icon{
         animation: shake 2s;
       }

@@ -19,7 +19,6 @@ const months = [
  * 格式化文章
  */
 const regex = /^(.+)?\r\n\s*(.+)?\r\n/
-const coverRegex = /^\[(.+)\].*(http.*(?:jpg|jpeg|png|gif))/
 export const formatPost = (post:any) => {
   // eslint-disable-next-line camelcase
   const { body, created_at } : any = post
@@ -30,7 +29,7 @@ export const formatPost = (post:any) => {
   console.log(cover)
   // @ts-ignore
   post.description = result[2]
-  // @ts-ignore
+
   // post.created_at = format(created_at, 'zh_CN')
   return post
 }

@@ -2,24 +2,9 @@
   <div class="tags">
     <Banner :imgBackgroud="bannerImg"/>
     <div class="content mt-8">
-      <v-btn depressed small class="item">Normal</v-btn>
-      <v-btn depressed small class="item">Normal</v-btn>
-      <v-btn depressed small class="item">Normal</v-btn>
-      <v-btn depressed small class="item">Normal</v-btn>
-      <v-btn depressed small class="item">Normal</v-btn>
-      <v-btn depressed small class="item">Normal</v-btn>
-      <v-btn depressed small class="item">Normal</v-btn>
-      <v-btn depressed small class="item">Normal</v-btn>
-      <v-btn depressed small class="item">Normal</v-btn>
-      <v-btn depressed small class="item">Normal</v-btn>
-      <v-btn depressed small class="item">Normal</v-btn>
-      <v-btn depressed small class="item">Normal</v-btn>
-      <v-btn depressed small class="item">Normal</v-btn>
-      <v-btn depressed small class="item">Normal</v-btn>
-
-
-
-
+      <v-btn v-for="(tag,key) in tagsList" :key="key " depressed dark class="item" :color="`#${tag.color}`">
+        <span>{{tag.name}}</span>
+      </v-btn>
     </div>
     <Loadding :hidden="loadding"/>
   </div>
@@ -27,6 +12,7 @@
 
 <script lang="ts">
 import { Vue, Component, Prop, Model, Watch } from 'vue-property-decorator'
+import { queryTag } from '@/utils/services'
 import Loadding from '@/components/Loading/index.vue'
 import Banner from '@/components/Banner/Index.vue'
   @Component({
@@ -43,9 +29,13 @@ export default class Index extends Vue {
       this.loadding = true
     }
     mounted () {
-      setTimeout(() => {
+      queryTag().then(res => {
+        this.tagsList = res
         this.loadding = false
-      }, 2000)
+      }).catch((err) => {
+        console.log(err)
+        this.loadding = false
+      })
     }
 }
 </script>
