@@ -140,6 +140,7 @@ import { Vue, Component, Prop, Model, Watch } from 'vue-property-decorator'
 import Banner from '@/components/Banner/Index.vue'
 import { queryPosts, queryArchivesCount } from '@/utils/services'
 import Loading from '@/components/Loading/index.vue'
+import { formatPost } from '@/utils/format'
 @Component({
   components: {
     Banner,
@@ -179,6 +180,7 @@ export default class Index extends Vue {
     this.loading = true
     this.postsList = await queryPosts(this.searchDTO)
     console.log(this.postsList)
+    formatPost(this.postsList[0])
     this.loading = false
   }
   nextPage () {
