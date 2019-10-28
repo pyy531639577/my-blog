@@ -19,7 +19,6 @@ import 'vuetify/dist/vuetify.min.css'
 Vue.use(Button)
 Vue.config.productionTip = false
 Vue.prototype.$config = config
-
 new Vue({
   // @ts-ignore
   vuetify,

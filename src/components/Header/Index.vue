@@ -1,8 +1,10 @@
 <template>
   <header class="my-blog-header" :class="isTop? '' : 'header-background '">
-    <router-link to="/">
-      <a class="logo">My Blog</a>
-    </router-link>
+    <div style="height: 100%;width: 200px">
+      <router-link to="/">
+        <p class="logo">My Blog</p>
+      </router-link>
+    </div>
     <nav class="menu">
       <ul>
         <li class="nav-item" v-for="(item,key) in menu" :key="key">

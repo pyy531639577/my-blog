@@ -3,12 +3,12 @@
     <Banner :imgBackgroud="bannerImg"/>
     <v-row class="content">
       <v-col cols="8">
-        <v-hover #default="{ hover }" class="blog-item mt-8">
+        <v-hover #default="{ hover }" class="blog-item mt-8" v-for="(item,index) in postsList" :key="index">
           <v-card :elevation="hover ? 12 : 4" style="border-radius: 6px">
-            <v-row>
+            <v-row style="height: 300px">
               <v-col cols="5">
                 <div style="text-align: left;padding:0 15px;font-size: 20px;font-weight: 600 ">
-                  <span>标题</span>
+                  <span>{{item.title}}</span>
                 </div>
                 <v-card-actions style="display: flex;flex-direction: row;justify-content: space-between">
                   <div>
@@ -21,7 +21,7 @@
                     <v-btn icon>
                       <v-icon>mdi-bookmark</v-icon>
                     </v-btn>
-                    <span>2019-08-02</span>
+                    <span>{{item.created_at}}</span>
                   </div>
                   <div>
                     <v-btn icon>
@@ -30,8 +30,9 @@
                     <span>后端</span>
                   </div>
                 </v-card-actions>
-                <v-card-text style="text-align: justify;letter-spacing: 2px;height: 143px">
-                  sdsadkDJIOWQDMKLKJODCASJDCKQdkjl;sajkldjkaDL;ldsaDLKJAsdfjhSDJKaldcjlafcjksaCLHaxdjsajc
+                <v-card-text style="text-align: justify;letter-spacing: 2px;height: 143px;overflow: hidden;
+    white-space: pre-line;">
+                  {{item.body}}
                 </v-card-text>
                 <v-card-actions>
                   <v-btn icon class="mx-2">
@@ -39,8 +40,8 @@
                   </v-btn>
                 </v-card-actions>
               </v-col>
-              <v-col cols="7" class="pa-0">
-                <div style="width: 100%;height: 300px;border-radius: 0 6px 6px 0;overflow: hidden">
+              <v-col cols="7" class="pa-0" style="height: 100%">
+                <div style="width: 100%;height: 100%;border-radius: 0 6px 6px 0;overflow: hidden">
                   <img src="https://picsum.photos/id/171/2048/1536" style="width: 100%;height: 100%;border-radius: 0 6px 6px 0">
                 </div>
               </v-col>
@@ -50,9 +51,11 @@
 
         <div class="text-center mt-8">
           <v-pagination
-            :length="15"
              dark
-            :total-visible="10"
+             :length="pageLength"
+             :page="searchDTO.page"
+             @next="nextPage"
+             @previous = "previousPage"
           ></v-pagination>
         </div>
       </v-col>
@@ -128,6 +131,7 @@
         </v-card>
       </v-col>
     </v-row>
+    <Loading :hidden="loading"/>
   </div>
 </template>
 
@@ -135,9 +139,11 @@
 import { Vue, Component, Prop, Model, Watch } from 'vue-property-decorator'
 import Banner from '@/components/Banner/Index.vue'
 import { queryPosts, queryArchivesCount } from '@/utils/services'
+import Loading from '@/components/Loading/index.vue'
 @Component({
   components: {
-    Banner
+    Banner,
+    Loading
   }
 })
 export default class Index extends Vue {
@@ -154,17 +160,42 @@ export default class Index extends Vue {
   postsList:any[]=[]
   // todo 今日灵感
   inspiration:any;
-  total:number = 0
+  total:number = 0;
+  pageLength:number = 0;
+  loading:boolean = false;
   created () {
 
   }
   async mounted () {
-    this.total = await queryArchivesCount()
+    this.loading = true
+    let repository = await queryArchivesCount()
+    let { issues } = repository.repository
+    this.total = issues.totalCount
+    this.pageLength = (this.total / this.searchDTO.pageSize) > 0 ? (this.total / this.searchDTO.pageSize + 1) : (this.total / this.searchDTO.pageSize)
+    console.log(this.pageLength)
     this.getPostList()
   }
   async getPostList () {
+    this.loading = true
     this.postsList = await queryPosts(this.searchDTO)
     console.log(this.postsList)
+    this.loading = false
+  }
+  nextPage () {
+    if (this.searchDTO.page + 1 > this.pageLength) {
+      console.log('已经是最后一页')
+    } else {
+      this.searchDTO.page = this.searchDTO.page + 1
+      this.getPostList()
+    }
+  }
+  previousPage () {
+    if (this.searchDTO.page - 1 > 1) {
+      console.log('已经是第一页')
+    } else {
+      this.searchDTO.page = this.searchDTO.page - 1
+      this.getPostList()
+    }
   }
 }
 </script>

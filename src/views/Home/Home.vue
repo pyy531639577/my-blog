@@ -38,7 +38,7 @@
         {{notify}}
       </v-banner>
       <Article :articleList="articleList" :number="totalCount"/>
-      <v-btn color="error" class="mt-4">More<v-icon>mdi-plus</v-icon></v-btn>
+      <v-btn color="error" class="mt-4" @click="gotoIndex">More<v-icon>mdi-plus</v-icon></v-btn>
 
     </div>
   </div>
@@ -110,6 +110,9 @@ export default class Home extends Vue {
       this.random = num
     }
     this.bannerClass['background-image'] = 'url(' + this.bannerImg[this.random] + ')'
+  }
+  gotoIndex () {
+    this.$router.push('/home')
   }
 }
 </script>

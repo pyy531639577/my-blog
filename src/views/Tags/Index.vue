@@ -50,7 +50,7 @@ export default class Index extends Vue {
       width: 50%;
       display: flex;
       flex-direction: row;
-      justify-content: start;
+      justify-content: flex-start;
       flex-wrap: wrap;
       .item{
         margin: 0.2rem 0.6rem;

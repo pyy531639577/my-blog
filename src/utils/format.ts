@@ -20,17 +20,6 @@ const months = [
  */
 const regex = /^(.+)?\r\n\s*(.+)?\r\n/
 export const formatPost = (post:any) => {
-  // eslint-disable-next-line camelcase
-  const { body, created_at } : any = post
-  const result = regex.exec(body)
-  // @ts-ignore
-  const cover = coverRegex.exec(body)
-  // @ts-ignore
-  console.log(cover)
-  // @ts-ignore
-  post.description = result[2]
-
-  // post.created_at = format(created_at, 'zh_CN')
   return post
 }
 export default formatPost
