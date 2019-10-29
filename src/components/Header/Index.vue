@@ -1,8 +1,9 @@
 <template>
   <header class="my-blog-header" :class="isTop? '' : 'header-background '">
     <div style="height: 100%;width: 200px">
-      <router-link to="/">
-        <p class="logo">My Blog</p>
+      <router-link to="/" class="logo">
+          <img src="../../assets/logo.png" style="height: 40px">
+          <span class="logo-title" :style="{ color: isTop ? '' : '#2c3e50'}">飞一般的感觉</span>
       </router-link>
     </div>
     <nav class="menu">
