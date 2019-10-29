@@ -3,7 +3,7 @@
     <div style="height: 100%;width: 200px">
       <router-link to="/" class="logo">
           <img src="../../assets/logo.png" style="height: 40px">
-          <span class="logo-title" :style="{ color: isTop ? '' : '#2c3e50'}">飞一般的感觉</span>
+          <span class="logo-title" :style="{ color: isTop ? '' : '#2c3e50'}">{{logoTitle}}</span>
       </router-link>
     </div>
     <nav class="menu">
@@ -11,7 +11,7 @@
         <li class="nav-item" v-for="(item,key) in menu" :key="key">
           <router-link :to="item.url">
             <a>
-              <i class="iconfont" :class="item.icon" style="font-size: 30px"></i>
+              <i class="iconfont" :class="item.icon" style="font-size: 20px;margin-right: 4px"></i>
               <span>{{item.name}}</span>
             </a>
           </router-link>
@@ -28,6 +28,7 @@ import config from '@/config/index'
 export default class Index extends Vue {
   menu:any[] = config.menu;
   isTop:boolean = false;
+  logoTitle:string = config.title;
 
   created () {
     this.handleTop()

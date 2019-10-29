@@ -4,7 +4,7 @@
        <div class="attach">
          <div class="attach-info">
            <div class="info-title">
-             <span>人生要有梦想，有梦想就要勇敢去追求，别放弃。</span>
+             <span>{{subTitle}}</span>
            </div>
            <ul>
              <li>
@@ -49,6 +49,7 @@ import { Component, Vue } from 'vue-property-decorator'
 import config from '@/config'
 import Article from '../../components/Article/Index.vue'
 import { queryPosts, queryArchivesCount } from '@/utils/services'
+import { formatPost } from '@/utils/format'
 @Component({
   components: {
     Article
@@ -67,6 +68,7 @@ export default class Home extends Vue {
   bannerImg:any[] = []
   random:number = 0
   bannerClass:any = {}
+  subTitle:string = config.subtitle
 
   created () {
     this.bannerImg = [
@@ -81,6 +83,7 @@ export default class Home extends Vue {
   async mounted () {
     this.totalCount = await queryArchivesCount()
     let result = await queryPosts(this.searchDTO)
+    formatPost(result)
     this.articleList = result
     this.random = Math.floor(Math.random() * this.bannerImg.length)
     this.bannerClass = {

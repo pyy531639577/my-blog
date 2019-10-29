@@ -5,14 +5,14 @@
       <v-col cols="8">
         <v-hover #default="{ hover }" class="blog-item mt-8" v-for="(item,index) in postsList" :key="index">
           <v-card :elevation="hover ? 12 : 4" style="border-radius: 6px">
-            <v-row style="height: 300px">
+            <v-row class="blog-info">
               <v-col cols="5">
-                <div style="text-align: left;padding:0 15px;font-size: 20px;font-weight: 600 ">
+                <div class="blog-title">
                   <span>{{item.title}}</span>
                 </div>
-                <v-card-actions style="display: flex;flex-direction: row;justify-content: space-between">
+                <v-card-actions class="blog-tool">
                   <div>
-                    <v-btn icon>
+                    <v-btn icon @click="onlike">
                       <v-icon>mdi-heart</v-icon>
                     </v-btn>
                     <span>399</span>
@@ -21,7 +21,7 @@
                     <v-btn icon>
                       <v-icon>mdi-bookmark</v-icon>
                     </v-btn>
-                    <span>{{item.created_at}}</span>
+                    <span>{{item.created_at.split('T')[0] }}</span>
                   </div>
                   <div>
                     <v-btn icon>
@@ -31,8 +31,8 @@
                   </div>
                 </v-card-actions>
                 <v-card-text style="text-align: justify;letter-spacing: 2px;height: 143px;overflow: hidden;
-    white-space: pre-line;">
-                  {{item.body}}
+    white-space: pre-line;margin-top: -40px;text-indent: 20px">
+                  {{item.desc}}
                 </v-card-text>
                 <v-card-actions>
                   <v-btn icon class="mx-2">
@@ -172,15 +172,15 @@ export default class Index extends Vue {
     let repository = await queryArchivesCount()
     let { issues } = repository.repository
     this.total = issues.totalCount
-    this.pageLength = (this.total / this.searchDTO.pageSize) > 0 ? (this.total / this.searchDTO.pageSize + 1) : (this.total / this.searchDTO.pageSize)
-    console.log(this.pageLength)
+    let num = (this.total / this.searchDTO.pageSize) > 0 ? (this.total / this.searchDTO.pageSize + 1) : (this.total / this.searchDTO.pageSize)
+    this.pageLength = Math.round(num)
     this.getPostList()
   }
   async getPostList () {
     this.loading = true
     this.postsList = await queryPosts(this.searchDTO)
     console.log(this.postsList)
-    formatPost(this.postsList[0])
+    formatPost(this.postsList)
     this.loading = false
   }
   nextPage () {
@@ -198,6 +198,9 @@ export default class Index extends Vue {
       this.searchDTO.page = this.searchDTO.page - 1
       this.getPostList()
     }
+  }
+  onlike () {
+    alert('你点击了喜欢')
   }
 }
 </script>
@@ -218,6 +221,20 @@ export default class Index extends Vue {
     }
     &:hover img{
       transform: scale(1.2);/*鼠标经过图片放大的倍数*/
+    }
+    .blog-info{
+      height: 247px;
+      .blog-title{
+        text-align: left;
+        padding:0 15px;
+        font-size: 20px;
+        font-weight: 600;
+      }
+      .blog-tool{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between
+      }
     }
   }
 

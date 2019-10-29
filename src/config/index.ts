@@ -2,8 +2,8 @@ export default {
   /**
    * 站点标题
    */
-  title: '我的博客',
-  subtitle: '好好学习 天天向上',
+  title: '飞一般的感觉',
+  subtitle: '人生要有梦想，有梦想就要勇敢去追求，别放弃。',
   notify: '博客将于2019年11月20日全部完善....',
   loadingImg: require('@/assets/images/loading.gif'),
 

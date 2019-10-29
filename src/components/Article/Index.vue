@@ -17,7 +17,7 @@
               <v-card-text class="text--primary">
                 <div class="content">
                   <p>
-                  {{item.description}}
+                  {{item.desc}}
                  </p>
                </div>
               </v-card-text>
