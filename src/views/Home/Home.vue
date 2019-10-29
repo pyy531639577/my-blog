@@ -49,7 +49,6 @@ import { Component, Vue } from 'vue-property-decorator'
 import config from '@/config'
 import Article from '../../components/Article/Index.vue'
 import { queryPosts, queryArchivesCount } from '@/utils/services'
-import format from '@/utils/format'
 @Component({
   components: {
     Article
@@ -82,9 +81,6 @@ export default class Home extends Vue {
   async mounted () {
     this.totalCount = await queryArchivesCount()
     let result = await queryPosts(this.searchDTO)
-    result.forEach((a:any) => {
-      format(a)
-    })
     this.articleList = result
     this.random = Math.floor(Math.random() * this.bannerImg.length)
     this.bannerClass = {
