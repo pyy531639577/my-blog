@@ -32,7 +32,9 @@ const siteUrl = 'http://juwairendian.gitee.io/blog/'
 const bg = 'https://raw.githubusercontent.com/chanshiyucx/poi/master/2019/reimu.png'
 console.info(`%c ${config.title} %c`, `${labelStyle}`, '', window.location.origin)
 console.info('%c Theme %c', `${labelStyle}`, '', siteUrl)
-console.info('~❀~ 发现控制台报错请务必联系博主 ~❀~')
+console.info('┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓')
+console.info('┃   发现控制台报错请务必联系博主     ┃')
+console.info('┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛')
 console.log(
   '%c ',
   `

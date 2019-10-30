@@ -42,6 +42,11 @@ export default new Router({
       path: '/tags',
       name: 'tags',
       component: () => import('@/views/Tags/Index.vue')
+    },
+    {
+      path: '/blog/:id',
+      name: 'blog',
+      component: () => import('@/views/BlogDetail/Index.vue')
     }
   ]
 })

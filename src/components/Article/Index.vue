@@ -56,21 +56,32 @@ export default class Index extends Vue {
 <style scoped lang="less">
   .article-content{
     margin-top: 40px;
-    .title{
-      background: rgba(44, 62, 80, 0.5);;
-      color: #f4f4f4;
+    .article-content-item{
+      cursor: pointer;
+      .title{
+        background: rgba(44, 62, 80, 0.5);
+        font-weight: bolder;
+        color: #f4f4f4;
+        &:hover{
+          color: #5d9ecc;
+        }
+      }
+      .content{
+        width: 100%;
+        height: 100px;
+        overflow: hidden;
+        text-align: justify;
+        letter-spacing: .1rem;
+        font-size: 1.2rem;
+        &:hover p{
+          text-decoration: underline;
+        }
+      }
+      .meta{
+        width: 100%;
+        padding: 0 0.5rem;
+      }
     }
-    .content{
-      width: 100%;
-      height: 100px;
-      overflow: hidden;
-      text-align: justify;
-      letter-spacing: .1rem;
-      font-size: 1.2rem;
-    }
-    .meta{
-      width: 100%;
-      padding: 0 0.5rem;
-    }
+
   }
 </style>
