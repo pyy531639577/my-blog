@@ -2,7 +2,7 @@
   <div class="banner">
     <v-img :src="imgBackgroud" aspect-ratio="1.7" height="500px"></v-img>
     <div class="banner-desc">
-      <h1></h1>
+      <h1>Hello Boy</h1>
     </div>
   </div>
 </template>
@@ -24,9 +24,11 @@ export default class Index extends Vue {
     position: relative;
     .banner-desc{
       position: absolute;
-      width: 200px;
-      top:180px;
-      left: 50%;
+      width: 100%;
+      bottom: 50px;
+      height: 100px;
+      line-height: 100px;
+
       color: #f4f4f4;
     }
   }
