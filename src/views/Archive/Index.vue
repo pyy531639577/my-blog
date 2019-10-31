@@ -59,8 +59,13 @@ export default class Index extends Vue {
     }
   ]
   loading:boolean = false
+  blogs:any[] =[]
+
   searchMore () {
     this.loading = !this.loading
+  }
+  mounted () {
+
   }
 }
 </script>

@@ -54,6 +54,7 @@ export default class Index extends Vue {
 </script>
 
 <style scoped lang="less">
+  @import "../../assets/animation";
   .article-content{
     margin-top: 40px;
     .article-content-item{
@@ -63,7 +64,8 @@ export default class Index extends Vue {
         font-weight: bolder;
         color: #f4f4f4;
         &:hover{
-          color: #5d9ecc;
+          /*color: #5d9ecc;*/
+          animation: fadeOutDown 2s;
         }
       }
       .content{

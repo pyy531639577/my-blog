@@ -21,7 +21,7 @@ export default {
   gitalk: {
     clientID: '1a406e7403a3e357cf7c',
     clientSecret: 'fb91b2632df77393ba5a08c510380b0236f4af89',
-    repo: 'comment', // 评论仓库地址
+    repo: 'Blogcomment ', // 评论仓库地址
     owner: 'pyy531639577',
     admin: ['pyy531639577'],
     distractionFreeMode: false // 是否开始无干扰模式【背景遮罩】
@@ -42,32 +42,32 @@ export default {
     {
       name: 'Home',
       icon: 'icon-shouye',
-      url: 'home'
+      url: '/home'
     },
     {
       name: 'Archive',
       icon: 'icon-copy',
-      url: 'archive'
+      url: '/archive'
     },
     {
       name: 'Category',
       icon: 'icon-all',
-      url: 'category'
+      url: '/category'
     },
     {
       name: 'Tag',
       icon: 'icon-attachment',
-      url: 'tags'
+      url: '/tags'
     },
     {
       name: 'Inspiration',
       icon: 'icon-linggan',
-      url: 'inspiration'
+      url: '/inspiration'
     },
     {
       name: 'About',
       icon: 'icon-guanyuwomen',
-      url: 'about'
+      url: '/about'
     }
   ],
 

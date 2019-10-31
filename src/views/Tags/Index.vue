@@ -2,9 +2,25 @@
   <div class="tags">
     <Banner :imgBackgroud="bannerImg"/>
     <div class="content mt-8">
-      <v-btn v-for="(tag,key) in tagsList" :key="key " depressed dark class="item" :color="`#${tag.color}`">
+      <v-btn v-for="(tag,key) in tagsList" :key="key " depressed dark class="item" :color="`#${tag.color}`" @click="checked(tag)">
         <span>{{tag.name}}</span>
       </v-btn>
+    </div>
+    <div class="mt-8" style="width: 50%;display: flex;flex-direction: row;border-bottom: 2px solid black" v-if="checkTagList">
+      <v-chip
+        v-for="(item,key ) in checkTagList"
+        :key="key"
+        class="ma-2"
+        close
+        :color="item?`#${item.color}`:''"
+        text-color="white"
+        @click:close="closeTag(item,key)"
+      >
+        <v-avatar left>
+          <v-icon>mdi-checkbox-marked-circle</v-icon>
+        </v-avatar>
+        {{item?item.name:''}}
+      </v-chip>
     </div>
     <Loadding :hidden="loadding"/>
   </div>
@@ -25,6 +41,7 @@ export default class Index extends Vue {
     bannerImg:string='https://picsum.photos/id/2/5616/3744'
     tagsList:any[]=[]
     loadding:boolean = false
+    checkTagList:any[] = []
     created () {
       this.loadding = true
     }
@@ -36,6 +53,17 @@ export default class Index extends Vue {
         console.log(err)
         this.loadding = false
       })
+    }
+    checked (tag:any) {
+      let checkTag = tag
+      if (this.checkTagList.includes(checkTag)) {
+
+      } else {
+        this.checkTagList.push(checkTag)
+      }
+    }
+    closeTag (data:any, key:number) {
+      this.checkTagList.splice(key, 1)
     }
 }
 </script>

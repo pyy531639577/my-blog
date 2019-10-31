@@ -1,6 +1,6 @@
-export default function linenumber (hljs) {
-  const w = window
-  const d = document
+export default function linenumber (hljs:any) {
+  const w:any = window
+  const d:any = document
   const TABLE_NAME = 'hljs-ln'
   const LINE_NAME = 'hljs-ln-line'
   const CODE_BLOCK_NAME = 'hljs-ln-code'
@@ -27,7 +27,7 @@ export default function linenumber (hljs) {
     d.getElementsByTagName('head')[0].appendChild(css)
   }
 
-  function initLineNumbersOnLoad (options) {
+  function initLineNumbersOnLoad (options:any) {
     try {
       const targetElement = d.querySelector(options.target)
       const blocks = targetElement.querySelectorAll('code[class*="language-"]')
@@ -41,14 +41,14 @@ export default function linenumber (hljs) {
     }
   }
 
-  function lineNumbersBlock (element, options) {
+  function lineNumbersBlock (element:any, options:any) {
     if (typeof element !== 'object') return
     async(function () {
       element.innerHTML = lineNumbersInternal(element, options)
     })
   }
 
-  function lineNumbersValue (value, options) {
+  function lineNumbersValue (value:any, options:any) {
     if (typeof value !== 'string') return
 
     const element = document.createElement('code')
@@ -57,7 +57,7 @@ export default function linenumber (hljs) {
     return lineNumbersInternal(element, options)
   }
 
-  function lineNumbersInternal (element, options) {
+  function lineNumbersInternal (element:any, options:any) {
     // define options or set default
     options = options || {
       singleLine: false
@@ -71,7 +71,7 @@ export default function linenumber (hljs) {
     return addLineNumbersBlockFor(element.innerHTML, firstLineIndex)
   }
 
-  function addLineNumbersBlockFor (inputHtml, firstLineIndex) {
+  function addLineNumbersBlockFor (inputHtml:any, firstLineIndex:any) {
     const lines = getLines(inputHtml)
 
     // if last line contains only carriage return remove it
@@ -111,11 +111,11 @@ export default function linenumber (hljs) {
   }
 
   /**
-   * Recursive method for fix multi-line elements implementation in highlight.js
+   * Recursive method for fix multi-line elements implementation in highlight.ts
    * Doing deep passage on child nodes.
    * @param {HTMLElement} element
    */
-  function duplicateMultilineNodes (element) {
+  function duplicateMultilineNodes (element:any) {
     const nodes = element.childNodes
     for (let node in nodes) {
       if (Object.prototype.hasOwnProperty.call(nodes, node)) {
@@ -132,10 +132,10 @@ export default function linenumber (hljs) {
   }
 
   /**
-   * Method for fix multi-line elements implementation in highlight.js
+   * Method for fix multi-line elements implementation in highlight.ts
    * @param {HTMLElement} element
    */
-  function duplicateMultilineNode (element) {
+  function duplicateMultilineNode (element:any) {
     const className = element.className
 
     if (!/hljs-/.test(className)) return
@@ -151,16 +151,16 @@ export default function linenumber (hljs) {
     element.innerHTML = result.trim()
   }
 
-  function getLines (text) {
+  function getLines (text:any) {
     if (text.length === 0) return []
     return text.split(BREAK_LINE_REGEXP)
   }
 
-  function getLinesCount (text) {
+  function getLinesCount (text:any) {
     return (text.trim().match(BREAK_LINE_REGEXP) || []).length
   }
 
-  function async (func) {
+  function async (func:any) {
     w.setTimeout(func, 0)
   }
 
@@ -169,8 +169,8 @@ export default function linenumber (hljs) {
    * @param {string} format
    * @param {array} args
    */
-  function format (format, args) {
-    return format.replace(/\{(\d+)\}/g, function (m, n) {
+  function format (format:any, args:any) {
+    return format.replace(/\{(\d+)\}/g, function (m:any, n:any) {
       return args[n] ? args[n] : m
     })
   }

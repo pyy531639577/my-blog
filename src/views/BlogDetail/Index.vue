@@ -2,30 +2,30 @@
   <div class="blog-info">
     <Banner :imgBackgroud="bannerImg" />
     <div class="content-wrapper mt-8">
-      <h1>[HTTP 系列] 第 2 篇 —— HTTP 协议那些事</h1>
-      <div class="content-tool">
-        <span class="mr-4">发布时间:2019-5-6 5:00:5</span>
-        <span class="mr-4">归档于 后端</span>
-        <ul>
-          <li>
-            <a>JAVA</a>
-          </li>
-          <li>
-            <a>JAVA</a>
-          </li>
-          <li>
-            <a>JAVA</a>
-          </li>
-        </ul>
-      </div>
-      <blockquote class="summary">
-        这里是《写给前端工程师的 HTTP 系列》，记得有位大佬曾经说过：“大厂前端面试对 HTTP 的
-        要求比 CSS 还要高”，由此可见 HTTP 的重要程度不可小视。文章写作计划如下，视情况可能有一定的删减
-        ，本篇是该系列的第 2 篇 —— 《HTTP 协议那些事》。这篇文章会涉及到 HTTP 协议，cookie 和 session，HTTP 首部/方法/状态码等。
-      </blockquote>
-      <section class="blog-content">
-        <MarkDown :content="post.body" target="#post" />
-      </section>
+      <article v-if="post">
+        <div class="post-header">
+          <div class="head">
+            <div class="title">
+              <h1>{{ post.title }}</h1>
+<!--              <span>{{ post.cover.title }}</span>-->
+            </div>
+            <div class="meta">
+              <span> <i class="icon icon-calendar"></i> {{ post.created_at }} </span>
+              <span>
+                <i class="icon icon-bookmark-empty"></i>
+                {{ post.milestone ? post.milestone.title : '未分类' }}
+              </span>
+              <span>
+                <span class="tag" v-for="label in post.labels" :key="label.id">{{ label.name }}</span>
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="post-body">
+          <MarkDown :content="post.body" target="#post"/>
+        </div>
+      </article>
+      <Commont :title="post.title" />
 
     </div>
   </div>
@@ -37,73 +37,156 @@ import Banner from '@/components/Banner/Index.vue'
 import { queryPost } from '@/utils/services'
 import Loading from '@/components/Loading/index.vue'
 import MarkDown from '@/components/MarkDown/Index.vue'
+import Commont from '@/components/Comment/Index.vue'
 @Component({
   components: {
     Loading,
     Banner,
-    MarkDown
+    MarkDown,
+    Commont
   }
 })
 export default class Index extends Vue {
   blogId:any;
   bannerImg:string = 'https://picsum.photos/id/2/5616/3744'
-  post:any
+  post:string = ''
 
   created () {
     this.blogId = this.$route.params.id
     console.log(this.blogId)
-  }
-  mounted () {
     this.getBlogDetail(this.blogId)
   }
+  mounted () {
 
-  getBlogDetail (id:number) {
-    this.post = queryPost(id)
+  }
+
+  async getBlogDetail (id:number) {
+    this.post = await queryPost(id)
   }
 }
 </script>
 
-<style scoped lang="less">
+<style lang="less">
+  /* 滚动条 */
+  .i-scroll {
+    &::-webkit-scrollbar {
+      width: 5px;
+      height: 5px;
+      background-color: transparent;
+    }
+    &::-webkit-scrollbar-thumb {
+      border-radius: 3px;
+      background-color: var(--dark-color);
+      background-image: -webkit-linear-gradient(
+        45deg,
+        rgba(255, 255, 255, 0.4) 25%,
+        transparent 25%,
+        transparent 50%,
+        rgba(255, 255, 255, 0.4) 50%,
+        rgba(255, 255, 255, 0.4) 75%,
+        transparent 75%,
+        transparent
+      );
+    }
+    &::-webkit-scrollbar-track {
+      background-color: transparent;
+    }
+  }
   .blog-info{
     display: flex;
     flex-direction: column;
     align-items: center;
-    .content-wrapper{
-      width: 50%;
-      text-align: justify;
-      .content-tool{
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        padding: 2rem 0;
-        ul{
-          list-style: none;
-          li{
-            display: inline-block;
-            background: #666666;
-            margin-left: 5px;
-            padding: 2px 15px;
-            a{
-              color: white;
-              text-decoration: none;
-              outline: none;
-              border: none;
-            }
+    text-align: justify;
+    .post-header{
+      width: 100%;
+      margin-bottom: 10px;
+      .head{
+        .title{
+          margin-bottom: 15px;
+          &:hover{
+            color: #5d9ecc;
           }
         }
+        .meta{
+          span{
+            margin-right: 10px;
+          }
+          .tag{
+            background: #5d9ecc;
+            padding: 2px 5px;
+            color:white;
+          }
+        }
+
       }
-      .summary{
-        color: #666;
-        padding: 0.5rem 1rem;
-        margin: 1rem 0;
-        border-left: 4px solid #cbcbcb;
-        background-color: #f8f8f8;
-        font-size: 0.8rem;
-        line-height: 1.8;
+    }
+    .post-body{
+      .markdown{
+        .blog-title{
+          margin: 10px 0;
+        }
+        pre {
+          padding: 0.12rem 0.16rem;
+          line-height: 1.5;
+          overflow-x: auto;
+        }
+        code[class*='language-'] {
+          width: 100%;
+          background-color: #2c3e50;
+          padding: 2rem 1rem;
+          font-weight: bold;
+          text-shadow: 0 0 1px rgba(0, 0, 0, 0.4);
+          text-align: left;
+          white-space: pre;
+          word-spacing: normal;
+          word-wrap: normal;
+          tab-size: 4;
+          hyphens: none;
+          position: relative;
+          overflow: auto;
+          .i-scroll;
+          &:before{
+            content: "CODE";
+            letter-spacing: 1px;
+            position: absolute;
+            font-size: 18px;
+            border-radius: 3px 3px 0 0;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 1.5rem;
+            line-height: 1.5rem;
+            background-color: #303133;
+            text-align: center;
+            color: rgb(93, 158, 204);
+          }
+          &:after {
+            content: "";
+            position: absolute;
+            top: 0.3rem;
+            left: 0.5rem;
+            border-radius: 50%;
+            width: 0.8rem;
+            height: 0.8rem;
+            background: #ff5f56;
+            box-shadow: 1.5rem 0 0 0 #ffbd2e, 3rem 0 0 0 #27c93f;
+          }
+        }
+        blockquote {
+          width: 96%;
+          border-left: 4px solid #bcbcbc;
+          background: #f6f6f6;
+          padding: 0 1rem;
+        }
+        li{
+          margin: 15px 0;
+        }
+        h2,h3,h4,h5{
+          color: #5d9ecc;
+          cursor: pointer;
+        }
       }
-      .blog-content{
-        display: block;
-      }
+
     }
   }
 </style>

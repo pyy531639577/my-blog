@@ -4,7 +4,7 @@
     <v-row class="content">
       <v-col cols="8">
         <v-hover #default="{ hover }" class="blog-item mt-8" v-for="(item,index) in postsList" :key="index">
-          <v-card :elevation="hover ? 12 : 4" style="border-radius: 6px">
+          <v-card :elevation="hover ? 12 : 4" style="border-radius: 6px" @click="ontouch(item)">
             <v-row class="blog-info">
               <v-col cols="5">
                 <div class="blog-title">
@@ -198,6 +198,9 @@ export default class Index extends Vue {
       this.searchDTO.page = this.searchDTO.page - 1
       this.getPostList()
     }
+  }
+  ontouch (data:any) {
+    this.$router.push('/blog/' + data.number)
   }
   onlike () {
     alert('你点击了喜欢')
