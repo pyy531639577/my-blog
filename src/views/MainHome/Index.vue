@@ -1,136 +1,136 @@
 <template>
   <div class="home-main">
     <Banner :imgBackgroud="bannerImg"/>
-    <v-row class="content">
-      <v-col cols="8">
-        <v-hover #default="{ hover }" class="blog-item mt-8" v-for="(item,index) in postsList" :key="index">
-          <v-card :elevation="hover ? 12 : 4" style="border-radius: 6px" @click="ontouch(item)">
-            <v-row class="blog-info">
-              <v-col cols="5">
-                <div class="blog-title">
-                  <span>{{item.title}}</span>
-                </div>
-                <v-card-actions class="blog-tool">
-                  <div>
-                    <v-btn icon @click="onlike">
-                      <v-icon>mdi-heart</v-icon>
-                    </v-btn>
-                    <span>399</span>
-                  </div>
-                  <div>
-                    <v-btn icon>
-                      <v-icon>mdi-bookmark</v-icon>
-                    </v-btn>
-                    <span>{{item.created_at.split('T')[0] }}</span>
-                  </div>
-                  <div>
-                    <v-btn icon>
-                      <v-icon>mdi-share-variant</v-icon>
-                    </v-btn>
-                    <span>后端</span>
-                  </div>
-                </v-card-actions>
-                <v-card-text style="text-align: justify;letter-spacing: 2px;height: 143px;overflow: hidden;
-    white-space: pre-line;margin-top: -40px;text-indent: 20px">
-                  {{item.desc}}
-                </v-card-text>
-                <v-card-actions>
-                  <v-btn icon class="mx-2">
-                    <v-icon class="display-2">mdi-dots-horizontal </v-icon>
-                  </v-btn>
-                </v-card-actions>
-              </v-col>
-              <v-col cols="7" class="pa-0" style="height: 100%">
-                <div style="width: 100%;height: 100%;border-radius: 0 6px 6px 0;overflow: hidden">
-                  <img src="https://picsum.photos/id/171/2048/1536" style="width: 100%;height: 100%;border-radius: 0 6px 6px 0">
-                </div>
-              </v-col>
-            </v-row>
-          </v-card>
-        </v-hover>
+    <div class="content-wrapper" style="width: 70%">
+        <div style="width: 100%;display: flex;flex-direction: row;justify-content: space-around">
+          <aside class="left" style="width: 70%">
+            <v-hover #default="{ hover }" class="blog-item mt-8" v-for="(item,index) in postsList" :key="index">
+              <v-card :elevation="hover ? 12 : 4" style="border-radius: 6px" @click="ontouch(item,index)">
+                <v-row class="blog-info">
+                  <v-col cols="5">
+                    <div class="blog-title">
+                      <span>{{item.title}}</span>
+                    </div>
+                    <div class="blog-tool">
+                      <div>
+                        <v-btn icon @click="onlike">
+                          <v-icon>mdi-heart</v-icon>
+                        </v-btn>
+                        <span>399</span>
+                      </div>
+                      <div>
+                        <v-btn icon>
+                          <v-icon>mdi-bookmark</v-icon>
+                        </v-btn>
+                        <span>{{item.created_at.split('T')[0] }}</span>
+                      </div>
+                      <div>
+                        <v-btn icon>
+                          <v-icon>mdi-share-variant</v-icon>
+                        </v-btn>
+                        <span>后端</span>
+                      </div>
+                    </div>
+                    <div class="blog-desc">
+                      {{item.desc}}
+                    </div>
+                    <div class="blog-more">
+                      <v-btn icon class="mx-2">
+                        <v-icon class="display-2">mdi-dots-horizontal </v-icon>
+                      </v-btn>
+                    </div>
+                  </v-col>
+                  <v-col cols="7" class="pa-0" style="height: 100%">
+                    <div style="width: 100%;height: 100%;border-radius: 0 6px 6px 0;overflow: hidden">
+                      <img src="https://picsum.photos/id/171/2048/1536" style="width: 100%;height: 100%;border-radius: 0 6px 6px 0">
+                    </div>
+                  </v-col>
+                </v-row>
+              </v-card>
+            </v-hover>
+            <div class="text-center mt-8">
+              <v-pagination
+                dark
+                :length="pageLength"
+                :page="searchDTO.page"
+                @next="nextPage"
+                @previous = "previousPage"
+              ></v-pagination>
+            </div>
+          </aside>
+          <aside class="right" style="width: 25%">
+            <v-card
+              class="mx-auto mt-8"
+              dark
+              max-width="400"
+            >
+              <v-card-title>
+                <v-icon
+                  large
+                  left
+                >
+                  mdi-square-edit-outline
+                </v-icon>
+                <span class="title font-weight-light">今日灵感</span>
+              </v-card-title>
 
-        <div class="text-center mt-8">
-          <v-pagination
-             dark
-             :length="pageLength"
-             :page="searchDTO.page"
-             @next="nextPage"
-             @previous = "previousPage"
-          ></v-pagination>
+              <v-card-text class="headline font-weight-bold">
+                "好好学习，天天向上"
+              </v-card-text>
+
+              <v-card-actions>
+                <v-list-item class="grow">
+                  <v-list-item-avatar color="grey darken-3">
+                    <v-img
+                      class="elevation-6"
+                      src="https://picsum.photos/id/195/768/1024"
+                    ></v-img>
+                  </v-list-item-avatar>
+
+                  <v-list-item-content>
+                    <v-list-item-title>Code Man丶</v-list-item-title>
+                  </v-list-item-content>
+
+                  <v-row
+                    align="center"
+                    justify="end"
+                  >
+                    <v-icon class="mr-1">mdi-heart</v-icon>
+                    <span class="subheading mr-2">256</span>
+                    <span class="mr-1">·</span>
+                    <v-icon class="mr-1">mdi-share-variant</v-icon>
+                    <span class="subheading">45</span>
+                  </v-row>
+                </v-list-item>
+              </v-card-actions>
+            </v-card>
+            <v-card
+              class="mx-auto mt-8 pb-4"
+              max-width="400">
+              <v-card-title>
+                <v-icon
+                  large
+                  left
+                  color="red"
+                >
+                  mdi-tag-multiple
+                </v-icon>
+                <span class="red--text font-weight-bold">热门标签</span>
+              </v-card-title>
+              <v-card-actions>
+                <v-list-item class="grow">
+                  <v-row
+                    align="center"
+                    justify="start"
+                  >
+                    <v-btn small class="ma-1 white--text" color="red">SpringBoot</v-btn>
+                  </v-row>
+                </v-list-item>
+              </v-card-actions>
+            </v-card>
+          </aside>
         </div>
-      </v-col>
-      <v-col cols="4">
-        <v-card
-          class="mx-auto mt-8"
-          dark
-          max-width="400"
-        >
-          <v-card-title>
-            <v-icon
-              large
-              left
-            >
-              mdi-square-edit-outline
-            </v-icon>
-            <span class="title font-weight-light">今日灵感</span>
-          </v-card-title>
-
-          <v-card-text class="headline font-weight-bold">
-            "好好学习，天天向上"
-          </v-card-text>
-
-          <v-card-actions>
-            <v-list-item class="grow">
-              <v-list-item-avatar color="grey darken-3">
-                <v-img
-                  class="elevation-6"
-                  src="https://picsum.photos/id/195/768/1024"
-                ></v-img>
-              </v-list-item-avatar>
-
-              <v-list-item-content>
-                <v-list-item-title>Code Man丶</v-list-item-title>
-              </v-list-item-content>
-
-              <v-row
-                align="center"
-                justify="end"
-              >
-                <v-icon class="mr-1">mdi-heart</v-icon>
-                <span class="subheading mr-2">256</span>
-                <span class="mr-1">·</span>
-                <v-icon class="mr-1">mdi-share-variant</v-icon>
-                <span class="subheading">45</span>
-              </v-row>
-            </v-list-item>
-          </v-card-actions>
-        </v-card>
-        <v-card
-          class="mx-auto mt-8 pb-4"
-          max-width="400">
-          <v-card-title>
-            <v-icon
-              large
-              left
-              color="red"
-            >
-              mdi-tag-multiple
-            </v-icon>
-            <span class="red--text font-weight-bold">热门标签</span>
-          </v-card-title>
-          <v-card-actions>
-            <v-list-item class="grow">
-              <v-row
-                align="center"
-                justify="start"
-              >
-                <v-btn small class="ma-1 white--text" color="red">SpringBoot</v-btn>
-              </v-row>
-            </v-list-item>
-          </v-card-actions>
-        </v-card>
-      </v-col>
-    </v-row>
+    </div>
     <Loading :hidden="loading"/>
   </div>
 </template>
@@ -164,6 +164,14 @@ export default class Index extends Vue {
   total:number = 0;
   pageLength:number = 0;
   loading:boolean = false;
+  preBlog:any = {
+    title: '',
+    number: 0
+  };
+  nextBlog:any = {
+    title: '',
+    number: 0
+  };
   created () {
 
   }
@@ -199,8 +207,28 @@ export default class Index extends Vue {
       this.getPostList()
     }
   }
-  ontouch (data:any) {
-    this.$router.push('/blog/' + data.number)
+  ontouch (data:any, index:number) {
+    let preNum = index - 1
+    let nextNum = index + 1
+    if (preNum < 0) {
+      this.preBlog.title = '已经是第一篇'
+    } else {
+      this.preBlog.title = this.postsList[preNum].title
+      this.preBlog.number = this.postsList[preNum].number
+    }
+    if (nextNum >= this.postsList.length) {
+      this.nextBlog.title = '已经是最后一篇'
+    } else {
+      this.nextBlog.title = this.postsList[nextNum].title
+      this.nextBlog.number = this.postsList[nextNum].number
+    }
+    this.$router.push({
+      path: '/blog/' + data.number,
+      query: {
+        nextBlog: this.nextBlog,
+        preBlog: this.preBlog
+      }
+    })
   }
   onlike () {
     alert('你点击了喜欢')
@@ -213,9 +241,6 @@ export default class Index extends Vue {
     display: flex;
     flex-direction: column;
     align-items: center;
-    .content{
-      width: 70%;
-    }
   }
   .blog-item{
     img{
@@ -229,14 +254,35 @@ export default class Index extends Vue {
       height: 247px;
       .blog-title{
         text-align: left;
-        padding:0 15px;
+        padding:0 1rem;
         font-size: 20px;
         font-weight: 600;
+        height: 30px;
+        text-overflow:ellipsis;/* 超出部分显示省略号 */
+        white-space: nowrap;/*规定段落中的文本不进行换行 */
+        overflow: hidden;
       }
       .blog-tool{
         display: flex;
         flex-direction: row;
-        justify-content: space-between
+        justify-content: space-between;
+        padding: 0 1rem;
+        height: 40px;
+        overflow: hidden;
+      }
+      .blog-desc{
+        text-align: justify;
+        letter-spacing: 2px;
+        padding: 1rem 1rem;
+        overflow: hidden;
+        white-space: pre-line;
+        margin-top: -40px;
+        text-indent: 20px;
+        max-height: 160px;
+
+      }
+      .blog-more{
+        padding: 0 1rem;
       }
     }
   }

@@ -25,6 +25,22 @@
           <MarkDown :content="post.body" target="#post"/>
         </div>
       </article>
+      <div class="post-nav mt-8">
+        <div class="post-pre">
+          <div class="overlay"></div>
+          <div class="post-meta">
+            <span>上一篇</span>
+            <span>{{preBlog.title}}</span>
+          </div>
+        </div>
+        <div class="post-next">
+          <div class="overlay"></div>
+          <div class="post-meta" style="text-align: right;right: 3rem">
+            <span>下一篇</span>
+            <span>{{nextBlog.title}}</span>
+          </div>
+        </div>
+      </div>
       <Commont :title="post.title" />
 
     </div>
@@ -50,9 +66,14 @@ export default class Index extends Vue {
   blogId:any;
   bannerImg:string = 'https://picsum.photos/id/2/5616/3744'
   post:string = ''
+  preBlog:any;
+  nextBlog:any
 
   created () {
+    this.preBlog = this.$route.query.preBlog
+    this.nextBlog = this.$route.query.nextBlog
     this.blogId = this.$route.params.id
+
     console.log(this.blogId)
     this.getBlogDetail(this.blogId)
   }
@@ -187,6 +208,61 @@ export default class Index extends Vue {
         }
       }
 
+    }
+    .post-nav{
+      width: 100%;
+      height: 150px;
+      display: flex;
+      flex-direction: row;
+      font-size: 0.65rem;
+      color: rgba(255, 255, 255, 0.7);
+      .post-pre{
+        width: 50%;
+        position: relative;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        background-image: url("../../assets/images/banner.jpg");
+        background-size: cover;
+        &:hover .overlay{
+          display: none;
+        }
+      }
+      .post-next{
+        width: 50%;
+        position: relative;
+        height: 100%;
+        background: #cc9e49;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        background-image: url("../../assets/images/banner.jpg");
+        &:hover .overlay{
+          display: none;
+        }
+      }
+      .overlay {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        margin: auto;
+        background-color: rgba(0, 0, 0, 0.6);
+      }
+      .post-meta{
+        position: absolute;
+        top: 2.8rem;
+        left: 3rem;
+        z-index: 1;
+        display: flex;
+        flex-direction: column;
+      }
     }
   }
 </style>

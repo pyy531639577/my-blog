@@ -70,8 +70,8 @@ export const queryPost = async (number:number) => {
     const url = `${blog}/issues/${number}?${open}`
     const response = await fetch(url)
     checkStatus(response)
-    const data = await response.json()
-    return data
+    console.log(response)
+    return await response.json()
   } catch (err) {
     console.log(err)
   }
