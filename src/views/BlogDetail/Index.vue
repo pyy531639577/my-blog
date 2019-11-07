@@ -10,13 +10,13 @@
 <!--              <span>{{ post.cover.title }}</span>-->
             </div>
             <div class="meta">
-              <span> <i class="icon icon-calendar"></i> {{ post.created_at }} </span>
+              <span> <i class="icon icon-calendar"></i> {{ post.createDate }} </span>
               <span>
                 <i class="icon icon-bookmark-empty"></i>
                 {{ post.milestone ? post.milestone.title : '未分类' }}
               </span>
               <span>
-                <span class="tag" v-for="label in post.labels" :key="label.id">{{ label.name }}</span>
+                <span class="tag" v-for="label in post.labels" :key="label.id"  :style="{ backgroundColor: '#'+label.color}">{{ label.name }}</span>
               </span>
             </div>
           </div>
@@ -25,7 +25,7 @@
           <MarkDown :content="post.body" target="#post"/>
         </div>
       </article>
-      <div class="post-nav mt-8">
+      <div class="post-nav mt-8" v-show="post">
         <div class="post-pre">
           <div class="overlay"></div>
           <div class="post-meta">
@@ -42,7 +42,7 @@
         </div>
       </div>
       <Commont :title="post.title" />
-
+      <Loading :hidden="loading"/>
     </div>
   </div>
 </template>
@@ -54,6 +54,7 @@ import { queryPost } from '@/utils/services'
 import Loading from '@/components/Loading/index.vue'
 import MarkDown from '@/components/MarkDown/Index.vue'
 import Commont from '@/components/Comment/Index.vue'
+import moment from 'moment'
 @Component({
   components: {
     Loading,
@@ -67,52 +68,30 @@ export default class Index extends Vue {
   bannerImg:string = 'https://picsum.photos/id/2/5616/3744'
   post:string = ''
   preBlog:any;
-  nextBlog:any
+  nextBlog:any;
+  loading:boolean = false;
 
   created () {
     this.preBlog = this.$route.query.preBlog
     this.nextBlog = this.$route.query.nextBlog
     this.blogId = this.$route.params.id
-
-    console.log(this.blogId)
-    this.getBlogDetail(this.blogId)
   }
   mounted () {
-
+    this.loading = true;
+    this.getBlogDetail(this.blogId)
+    this.loading = false;
   }
 
   async getBlogDetail (id:number) {
-    this.post = await queryPost(id)
+    let res = await queryPost(id)
+    res.createDate =  moment(res.created_at).format("YYYY年MM月DD日");
+    this.post = res;
   }
 }
 </script>
 
 <style lang="less">
-  /* 滚动条 */
-  .i-scroll {
-    &::-webkit-scrollbar {
-      width: 5px;
-      height: 5px;
-      background-color: transparent;
-    }
-    &::-webkit-scrollbar-thumb {
-      border-radius: 3px;
-      background-color: var(--dark-color);
-      background-image: -webkit-linear-gradient(
-        45deg,
-        rgba(255, 255, 255, 0.4) 25%,
-        transparent 25%,
-        transparent 50%,
-        rgba(255, 255, 255, 0.4) 50%,
-        rgba(255, 255, 255, 0.4) 75%,
-        transparent 75%,
-        transparent
-      );
-    }
-    &::-webkit-scrollbar-track {
-      background-color: transparent;
-    }
-  }
+  @import "../../assets/animation.less";
   .blog-info{
     display: flex;
     flex-direction: column;
@@ -136,6 +115,7 @@ export default class Index extends Vue {
             background: #5d9ecc;
             padding: 2px 5px;
             color:white;
+            cursor: pointer;
           }
         }
 
@@ -163,9 +143,10 @@ export default class Index extends Vue {
           word-wrap: normal;
           tab-size: 4;
           hyphens: none;
+          font-size: 18px;
           position: relative;
           overflow: auto;
-          .i-scroll;
+          max-height: 600px;
           &:before{
             content: "CODE";
             letter-spacing: 1px;
@@ -201,6 +182,7 @@ export default class Index extends Vue {
         }
         li{
           margin: 15px 0;
+          font-family: fantasy;
         }
         h2,h3,h4,h5{
           color: #5d9ecc;
