@@ -1,6 +1,6 @@
 <template>
   <div class="tags">
-    <Banner :imgBackgroud="bannerImg"/>
+    <Banner :imgBackgroud="bannerImg" title="Tag For Every Blog"/>
     <div class="content mt-8">
       <v-btn v-for="(tag,key) in tagsList" :key="key " depressed dark class="item" :color="`#${tag.color}`" @click="checked(tag)">
         <span>{{tag.name}}</span>

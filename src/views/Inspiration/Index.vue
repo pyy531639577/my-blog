@@ -1,6 +1,6 @@
 <template>
   <div class="inspiration">
-    <Banner :imgBackgroud="bannerImg"/>
+    <Banner :imgBackgroud="bannerImg" title="My Inspiration Come Form Life"/>
     <div class="inspiration-body">
       <v-hover #default="{ hover }" v-for="(item,index) in inspirationList" :key="index">
         <v-card :elevation="hover ? 8 : 2" class="inspiration-item mt-8" :style="{ borderTop: '2px solid '+item.color }">

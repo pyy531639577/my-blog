@@ -1,6 +1,6 @@
 <template>
   <div class="home-main">
-    <Banner :imgBackgroud="bannerImg"/>
+    <Banner :imgBackgroud="bannerImg" title="Welcome to My Blog Web, Hope You Have a Good Idea 。"/>
     <div class="content-wrapper" style="width: 70%">
         <div style="width: 100%;display: flex;flex-direction: row;justify-content: space-around">
           <aside class="left" style="width: 70%">
@@ -75,7 +75,7 @@
               </v-card-title>
 
               <v-card-text class="headline font-weight-bold">
-                "好好学习，天天向上"
+                "学而时习之，不亦乐乎。"
               </v-card-text>
 
               <v-card-actions>
@@ -88,7 +88,7 @@
                   </v-list-item-avatar>
 
                   <v-list-item-content>
-                    <v-list-item-title>Code Man丶</v-list-item-title>
+                    <v-list-item-title>PYY</v-list-item-title>
                   </v-list-item-content>
 
                   <v-row
@@ -96,10 +96,10 @@
                     justify="end"
                   >
                     <v-icon class="mr-1">mdi-heart</v-icon>
-                    <span class="subheading mr-2">256</span>
+                    <span class="subheading mr-2">520</span>
                     <span class="mr-1">·</span>
                     <v-icon class="mr-1">mdi-share-variant</v-icon>
-                    <span class="subheading">45</span>
+                    <span class="subheading">1314</span>
                   </v-row>
                 </v-list-item>
               </v-card-actions>
