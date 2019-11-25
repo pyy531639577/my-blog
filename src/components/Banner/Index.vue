@@ -2,7 +2,7 @@
   <div class="banner">
     <v-img :src="imgBackgroud" aspect-ratio="1.7" height="500px"></v-img>
     <div class="banner-desc">
-      <h1>Hello Boy</h1>
+      <h1>{{title}}</h1>
     </div>
   </div>
 </template>
@@ -14,6 +14,8 @@ import { Vue, Component, Prop, Model, Watch } from 'vue-property-decorator'
 export default class Index extends Vue {
   @Prop({ type: String, default: '' })
   imgBackgroud:any
+  @Prop({type:String ,default: ''})
+  title:any
 }
 </script>
 

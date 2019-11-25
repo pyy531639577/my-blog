@@ -1,6 +1,6 @@
 <template>
   <div class="category">
-    <Banner :imgBackgroud="bannerImg"/>
+    <Banner :imgBackgroud="bannerImg" title="Make Blog Clear to Read"/>
     <v-row class="content mt-8">
       <v-col cols="4" v-for="(category,key) in categoryList" :key="key">
         <v-hover #default="{ hover }">
