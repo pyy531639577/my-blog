@@ -77,15 +77,20 @@ export default class Index extends Vue {
     this.blogId = this.$route.params.id
   }
   mounted () {
-    this.loading = true;
+    this.loading = true
     this.getBlogDetail(this.blogId)
-    this.loading = false;
+    this.loading = false
   }
 
   async getBlogDetail (id:number) {
     let res = await queryPost(id)
-    res.createDate =  moment(res.created_at).format("YYYY年MM月DD日");
-    this.post = res;
+    res.createDate = moment(res.created_at).format('YYYY年MM月DD日')
+    this.post = res
+  }
+  showBlog (data:any, index:number) {
+    this.$router.push({
+      path: '/blog/' + data.number
+    })
   }
 }
 </script>

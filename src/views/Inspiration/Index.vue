@@ -39,7 +39,7 @@
 <script lang="ts">
 import { Vue, Component, Prop, Model, Watch } from 'vue-property-decorator'
 import Banner from '@/components/Banner/Index.vue'
-import { queryInspirationCount, queryInspiration  } from '@/utils/services'
+import { queryInspirationCount, queryInspiration } from '@/utils/services'
 import Loading from '@/components/Loading/index.vue'
 import moment from 'moment'
 @Component({
@@ -51,49 +51,47 @@ import moment from 'moment'
 export default class Index extends Vue {
   bannerImg:string='https://picsum.photos/id/1008/5616/3744';
   itemColor:any[] = [
-    "rgb(249, 191, 69)","rgb(134, 193, 102)","rgb(185, 136, 125)","rgb(241, 148, 131)","rgb(178, 143, 206)",
-    "rgb(134, 120, 53)","rgb(46, 169, 223)","rgb(231, 148, 96)","rgb(245, 150, 170)"
+    'rgb(249, 191, 69)', 'rgb(134, 193, 102)', 'rgb(185, 136, 125)', 'rgb(241, 148, 131)', 'rgb(178, 143, 206)',
+    'rgb(134, 120, 53)', 'rgb(46, 169, 223)', 'rgb(231, 148, 96)', 'rgb(245, 150, 170)'
   ];
   inspirationList:any[] = [];
   total:number = 0;
   loading:boolean = false;
   searchDTO:any = {
-    page:1,
-    pageSize:10
+    page: 1,
+    pageSize: 10
   }
   alter:any = {
-    open:false,
-    text:"",
-    position:'top'
+    open: false,
+    text: '',
+    position: 'top'
   }
-  mounted(){
-    this.getList();
+  mounted () {
+    this.getList()
   }
-  async getList(){
-    this.loading = true;
+  async getList () {
+    this.loading = true
     let res = await queryInspirationCount()
-    this.total = res.repository.issues.totalCount;
-    let res2 = await queryInspiration(this.searchDTO);
-    this.inspirationList = res2;
-    this.inspirationList.forEach((v,k) => {
-      v.createDate = moment(v.created_at).format("YYYY年MM月DD日");
+    this.total = res.repository.issues.totalCount
+    let res2 = await queryInspiration(this.searchDTO)
+    this.inspirationList = res2
+    this.inspirationList.forEach((v, k) => {
+      v.createDate = moment(v.created_at).format('YYYY年MM月DD日')
       v.color = this.itemColor[k]
-    });
-    this.loading = false;
+    })
+    this.loading = false
   }
 
-  searchMore(){
-    let min = this.searchDTO.page * 10;
-    if (this.total>min){
-      this.searchDTO.page = this.searchDTO.page +1;
-      this.getList();
+  searchMore () {
+    let min = this.searchDTO.page * 10
+    if (this.total > min) {
+      this.searchDTO.page = this.searchDTO.page + 1
+      this.getList()
     } else {
-      this.alter.open = true;
-      this.alter.text = "没有更多了"
+      this.alter.open = true
+      this.alter.text = '没有更多了'
     }
   }
-
-
 }
 </script>
 

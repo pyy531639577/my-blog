@@ -2,7 +2,7 @@
   <div class="article-content">
     <transition name="el-fade-in">
       <v-row v-show="articleList.length">
-        <v-col cols="6" v-for="(item,key) in articleList" :key="key">
+        <v-col cols="6" v-for="(item,key) in articleList" :key="key" @click="showBlog(item,key)">
           <v-hover #default="{ hover }">
             <v-card
               :elevation="hover ? 12 : 4"
@@ -50,6 +50,10 @@ export default class Index extends Vue {
   articleList :any;
   @Prop({ type: Number, default: 0 })
   total:number = 0
+
+  showBlog(){
+
+  }
 }
 </script>
 
