@@ -38,7 +38,7 @@
         {{notify}}
       </v-banner>
       <Article :articleList="articleList" :number="totalCount"/>
-      <v-btn color="error" class="mt-4" @click="gotoIndex">More<v-icon>mdi-plus</v-icon></v-btn>
+      <v-btn color="error" class="mt-4 mb-8" @click="gotoIndex">More<v-icon>mdi-plus</v-icon></v-btn>
       <div style="position:absolute;left: -400px;top: 100px;display: flex;flex-direction: column">
         <img src="../../assets/images/caihong.png" alt="" width="200">
         <span class="mt-8" style="font-size: 32px;color: #409eff;">在你左边画一条彩虹</span>
@@ -47,7 +47,6 @@
         <img src="../../assets/images/long.png" alt="" width="200">
         <span class="mt-8" style="font-size: 32px;color: #d94f3e;">再在右边画条龙</span>
       </div>
-
     </div>
   </div>
 </template>
@@ -70,7 +69,7 @@ export default class Home extends Vue {
   articleList = []
   searchDTO:any = {
     page: 1,
-    pageSize: 10,
+    pageSize: 6,
     filter: ''
   }
   bannerImg:any[] = []

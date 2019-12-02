@@ -10,7 +10,7 @@
               <v-img
                 class="article-img"
                 height="250"
-                src="https://cdn.vuetifyjs.com/images/cards/cooking.png"
+                :src="item.cover"
               >
                 <v-card-title class="title">{{item.title}}</v-card-title>
               </v-img>

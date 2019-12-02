@@ -1,7 +1,7 @@
 <template>
   <div class="blog-info">
     <Banner :imgBackgroud="bannerImg" />
-    <div class="content-wrapper mt-8">
+    <div style="width: 60%" class="mt-8">
       <article v-if="post">
         <div class="post-header">
           <div class="head">
@@ -251,5 +251,8 @@ export default class Index extends Vue {
         flex-direction: column;
       }
     }
+  }
+  .img-zoomable{
+    width: 100%;
   }
 </style>

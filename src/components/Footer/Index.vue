@@ -18,6 +18,7 @@ export default class Index extends Vue {
 
 <style scoped lang="less">
   .footer{
+    clear: both;
     width:100%;
     display: flex;
     flex-direction: column;

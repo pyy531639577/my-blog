@@ -7,7 +7,7 @@
             <v-hover #default="{ hover }" class="blog-item mt-8" v-for="(item,index) in postsList" :key="index">
               <v-card :elevation="hover ? 12 : 4" style="border-radius: 6px" @click="ontouch(item,index)">
                 <v-row class="blog-info">
-                  <v-col cols="5">
+                  <v-col cols="7">
                     <div class="blog-title">
                       <span>{{item.title}}</span>
                     </div>
@@ -40,9 +40,9 @@
                       </v-btn>
                     </div>
                   </v-col>
-                  <v-col cols="7" class="pa-0" style="height: 100%">
+                  <v-col cols="5" class="pa-0" style="height: 100%">
                     <div style="width: 100%;height: 100%;border-radius: 0 6px 6px 0;overflow: hidden">
-                      <img src="https://picsum.photos/id/171/2048/1536" style="width: 100%;height: 100%;border-radius: 0 6px 6px 0">
+                      <img :src="item.cover" style="width: 100%;height: 100%;border-radius: 0 6px 6px 0">
                     </div>
                   </v-col>
                 </v-row>

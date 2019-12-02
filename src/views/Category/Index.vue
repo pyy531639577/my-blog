@@ -18,7 +18,7 @@
 
               <v-card-subtitle style="text-align: justify" v-text="category.description"></v-card-subtitle>
             </div>
-            <span class="display-1 ma-2">{{category.number}}</span>
+            <span class="display-1 ma-2">{{category.open_issues}}</span>
           </div>
         </v-card>
         </v-hover>

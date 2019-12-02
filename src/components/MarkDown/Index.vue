@@ -22,7 +22,7 @@ renderer.heading = function (text:any, level:number, raw:any, slugger:any) {
 }
 
 renderer.image = function (href:string, title:string, text:string) {
-  return `<span class="img-box cursor"><img class="img-zoomable" src="${href}" loading="lazy" alt="${text}" />${
+  return `<span><img class="img-zoomable" src="${href}" loading="lazy" alt="${text}" />${
     text ? `<span>◭ ${text}</span>` : ''
   }</span>`
 }
